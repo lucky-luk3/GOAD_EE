@@ -54,14 +54,14 @@ mitigation rarely closes a path — exactly what GrexID's alternatives view show
 ```
 <HR Payroll Admins, 5 members> ─ReadGMSAPassword→ gmsa_payroll$
         ─ForceChangePassword→ diego.m ─ForceChangePassword→ sergio.h
-        ─AddSelf→ Domain Admins
+        ─DCSync→ Domain Admins
 ```
 
-**Chain B — ERP kerberoast → nested groups → server admins (6 hops)**
+**Chain B — ERP kerberoast → nested groups → server admins (5 hops)**
 ```
 svc_erp ─MemberOf→ Database Administrators ─GenericWrite→ Backup Team
         ─GenericAll→ raul.b ─WriteDacl→ Server Administrators
-        ─GenericAll→ admin.t0 (Domain Admin)
+        ─DCSync→ Domain Admins
 ```
 
 **Chain C — Sales team (8) → Purchasing → PKI → ADCS ESC4 (5 hops)**
@@ -75,15 +75,15 @@ svc_erp ─MemberOf→ Database Administrators ─GenericWrite→ Backup Team
 ```
 <Production Operators, 15 members> ─GenericWrite→ Maintenance Engineers (4)
         ─ForceChangePassword→ ivan.o ─GenericWrite→ OT SCADA Admins
-        ─WriteOwner→ GPO Managers ─WriteDacl→ Domain Admins
+        ─WriteOwner→ GPO Managers ─DCSync→ Domain Admins
 ```
 
-**Chain E — Finance team (6) → backup.svc → MERGES INTO Chain B (7 hops)**
+**Chain E — Finance team (6) → backup.svc → MERGES INTO Chain B (6 hops)**
 ```
 <Finance Department, 6 members> ─ForceChangePassword→ backup.svc
         ─MemberOf→ Backup Team  ◀── merge point with Chain B
         ─GenericAll→ raul.b ─WriteDacl→ Server Administrators
-        ─GenericAll→ admin.t0 (Domain Admin)
+        ─DCSync→ Domain Admins
 ```
 
 `Backup Team` is the shared junction: both the ERP path (B) and the Finance
@@ -91,7 +91,7 @@ path (E) funnel through it, so the graph shows a clear convergence.
 
 Every edge above is one that SharpHound collects and GrexID renders:
 `MemberOf, ReadGMSAPassword, ForceChangePassword, GenericWrite, AddMember,
-GenericAll, WriteDacl, WriteOwner, AddSelf, ADCSESC4`.
+GenericAll, WriteDacl, WriteOwner, ADCSESC4, DCSync`.
 
 ## Attack-path graph
 
@@ -107,7 +107,7 @@ flowchart LR
     A0 -->|"ReadGMSAPassword"| A1
     A1 -->|"ForceChangePassword"| A2
     A2 -->|"ForceChangePassword"| A3
-    A3 -->|"AddSelf"| DA
+    A3 -->|"DCSync"| DA
 
     %% ---------- Chain B : ERP kerberoast ----------
     B0["svc_erp<br/>(Kerberoast)"]:::entry
@@ -115,13 +115,11 @@ flowchart LR
     BK["Backup Team"]:::merge
     B2["raul.b"]
     B3["Server Administrators"]
-    B4["admin.t0<br/>(DA member)"]
     B0 -->|"MemberOf"| B1
     B1 -->|"GenericWrite"| BK
     BK -->|"GenericAll"| B2
     B2 -->|"WriteDacl"| B3
-    B3 -->|"GenericAll"| B4
-    B4 -->|"MemberOf"| DA
+    B3 -->|"DCSync"| DA
 
     %% ---------- Chain C : ADCS ESC4 ----------
     C0["Sales Department (8)<br/>noelia.s, emilio.c, ..."]:::entry
@@ -143,7 +141,7 @@ flowchart LR
     D1 -->|"ForceChangePassword"| D2
     D2 -->|"GenericWrite"| D3
     D3 -->|"WriteOwner"| D4
-    D4 -->|"WriteDacl"| DA
+    D4 -->|"DCSync"| DA
 
     %% ---------- Chain E : Finance (merges into B) ----------
     E0["Finance Department (6)<br/>marcos.v, ..."]:::entry
@@ -202,12 +200,21 @@ AS-REP/kerberoastable footholds, so cracking them leads straight into a chain.
 - `scripts/gmsa_readers.ps1` — grants `HR Payroll Admins` read access to the
   `gmsa_payroll` managed password → `ReadGMSAPassword` edge.
 
-The scoped **ESC4** is a proper GOAD vuln role, `vulns/adcs_esc4` (modelled on
-`vulns/adcs_esc7`), configured from `config.json` (`vulns` + `vulns_vars`). It
-runs as the domain admin (`become: runas`) and grants `PKI Administrators`
-`GenericAll` over the published `User` template → scoped `ADCSESC4` edge. It must
-run elevated: modifying a default template's DACL needs Enterprise Admin rights,
-so the earlier plain-script approach failed with "Access is denied".
+Two ESC/edge behaviours are proper GOAD vuln roles, configured from `config.json`
+(`vulns` + `vulns_vars`) and run as the domain admin (`become: runas`):
+
+- `vulns/adcs_esc4` (modelled on `vulns/adcs_esc7`) grants `PKI Administrators`
+  `GenericAll` over the published `User` template → scoped `ADCSESC4` edge. It
+  must run elevated: modifying a default template's DACL needs Enterprise Admin
+  rights (a plain script running as `vagrant` fails with "Access is denied").
+- `vulns/dcsync` grants replication rights
+  (`DS-Replication-Get-Changes` + `-Get-Changes-All`) on the **domain object** to
+  the terminal principals of Chains A, B/E and D (`sergio.h`,
+  `Server Administrators`, `GPO Managers`). This is the **AdminSDHolder-proof**
+  way to reach Domain Admins: ACEs placed directly on the protected `Domain
+  Admins` group (or on a DA member such as `admin.t0`) are reverted by SDProp
+  every ~60 min and never materialise, so those terminal edges use DCSync
+  instead — which BloodHound/GrexID render as full domain compromise.
 
 ## Deploy
 

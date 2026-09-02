@@ -393,16 +393,15 @@ acls = {}
 def ace(name, for_, to, right, inheritance="None"):
     acls[name] = {"for": for_, "to": to, "right": right, "inheritance": inheritance}
 
-# CHAIN A (ReadGMSAPassword edge set by scripts/gmsa_readers.ps1)
+# CHAIN A (ReadGMSAPassword edge set by scripts/gmsa_readers.ps1;
+#          terminal DCSync for sergio.h set by the dcsync vuln role)
 ace("A_gmsa_fcp_diego",       "gmsa_payroll$", "diego.m", "Ext-User-Force-Change-Password")
 ace("A_diego_fcp_sergio",     "diego.m", "sergio.h", "Ext-User-Force-Change-Password")
-ace("A_sergio_addself_da",    "sergio.h", "Domain Admins", "Ext-Self-Self-Membership")
 
-# CHAIN B
+# CHAIN B (terminal DCSync for Server Administrators set by the dcsync vuln role)
 ace("B_dba_gw_backup",        "Database Administrators", "Backup Team", "GenericWrite")
 ace("B_backup_ga_raul",       "Backup Team", "raul.b", "GenericAll")
 ace("B_raul_wd_serveradmins", "raul.b", "Server Administrators", "WriteDacl")
-ace("B_serveradmins_ga_t0",   "Server Administrators", "admin.t0", "GenericAll")
 
 # CHAIN C (ADCSESC4 edge set by scripts/esc4.ps1)
 ace("C_sales_fcp_pablo",      "Sales Department", "pablo.c", "Ext-User-Force-Change-Password")
@@ -413,7 +412,7 @@ ace("D_prod_gw_maint",        "Production Operators", "Maintenance Engineers", "
 ace("D_maint_fcp_ivan",       "Maintenance Engineers", "ivan.o", "Ext-User-Force-Change-Password")
 ace("D_ivan_gw_scada",        "ivan.o", "OT SCADA Admins", "GenericWrite")
 ace("D_scada_wo_gpo",         "OT SCADA Admins", "GPO Managers", "WriteOwner")
-ace("D_gpo_wd_da",            "GPO Managers", "Domain Admins", "WriteDacl")
+# terminal DCSync for GPO Managers set by the dcsync vuln role
 
 # CHAIN E : Finance team -> backup.svc, which is a member of Backup Team
 #           => the path MERGES into CHAIN B at the "Backup Team" node.
@@ -442,7 +441,7 @@ config = {
                 "local_admin_password": DOMAIN_PASSWORD, "domain": DOMAIN,
                 "path": BASE,
                 "scripts": ["attributes.ps1", "gmsa_readers.ps1"],
-                "vulns": ["disable_firewall", "adcs_esc4"],
+                "vulns": ["disable_firewall", "adcs_esc4", "dcsync"],
                 "vulns_vars": {
                     "adcs_esc4": {
                         # CHAIN C : scoped ESC4 (PKI Administrators only, not
@@ -451,7 +450,16 @@ config = {
                             "adcs_esc4_group": "PKI Administrators",
                             "adcs_esc4_template": "User",
                         }
-                    }
+                    },
+                    # Terminal DA edges via DCSync (durable, AdminSDHolder-proof).
+                    # Replaces AddSelf/WriteDacl on the protected Domain Admins
+                    # group and GenericAll on a protected DA member (admin.t0),
+                    # which SDProp reverts and therefore never materialise.
+                    "dcsync": {
+                        "sergio":       {"principal": "sergio.h"},              # Chain A
+                        "serveradmins": {"principal": "Server Administrators"}, # Chains B + E
+                        "gpomanagers":  {"principal": "GPO Managers"},          # Chain D
+                    },
                 },
             }
         },

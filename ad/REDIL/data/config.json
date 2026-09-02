@@ -13,13 +13,25 @@
                 ],
                 "vulns": [
                     "disable_firewall",
-                    "adcs_esc4"
+                    "adcs_esc4",
+                    "dcsync"
                 ],
                 "vulns_vars": {
                     "adcs_esc4": {
                         "esc4": {
                             "adcs_esc4_group": "PKI Administrators",
                             "adcs_esc4_template": "User"
+                        }
+                    },
+                    "dcsync": {
+                        "sergio": {
+                            "principal": "sergio.h"
+                        },
+                        "serveradmins": {
+                            "principal": "Server Administrators"
+                        },
+                        "gpomanagers": {
+                            "principal": "GPO Managers"
                         }
                     }
                 }
@@ -278,12 +290,6 @@
                         "right": "Ext-User-Force-Change-Password",
                         "inheritance": "None"
                     },
-                    "A_sergio_addself_da": {
-                        "for": "sergio.h",
-                        "to": "Domain Admins",
-                        "right": "Ext-Self-Self-Membership",
-                        "inheritance": "None"
-                    },
                     "B_dba_gw_backup": {
                         "for": "Database Administrators",
                         "to": "Backup Team",
@@ -300,12 +306,6 @@
                         "for": "raul.b",
                         "to": "Server Administrators",
                         "right": "WriteDacl",
-                        "inheritance": "None"
-                    },
-                    "B_serveradmins_ga_t0": {
-                        "for": "Server Administrators",
-                        "to": "admin.t0",
-                        "right": "GenericAll",
                         "inheritance": "None"
                     },
                     "C_sales_fcp_pablo": {
@@ -342,12 +342,6 @@
                         "for": "OT SCADA Admins",
                         "to": "GPO Managers",
                         "right": "WriteOwner",
-                        "inheritance": "None"
-                    },
-                    "D_gpo_wd_da": {
-                        "for": "GPO Managers",
-                        "to": "Domain Admins",
-                        "right": "WriteDacl",
                         "inheritance": "None"
                     },
                     "E_finance_fcp_backupsvc": {
