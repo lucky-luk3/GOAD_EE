@@ -93,6 +93,73 @@ Every edge above is one that SharpHound collects and GrexID renders:
 `MemberOf, ReadGMSAPassword, ForceChangePassword, GenericWrite, AddMember,
 GenericAll, WriteDacl, WriteOwner, AddSelf, ADCSESC4`.
 
+## Attack-path graph
+
+```mermaid
+flowchart LR
+    DA(["Domain Admins"]):::sink
+
+    %% ---------- Chain A : HR / gMSA ----------
+    A0["HR Payroll Admins (5)<br/>lucia.g, marta.b, ..."]:::entry
+    A1["gmsa_payroll$"]
+    A2["diego.m"]
+    A3["sergio.h<br/>(Helpdesk)"]
+    A0 -->|"ReadGMSAPassword"| A1
+    A1 -->|"ForceChangePassword"| A2
+    A2 -->|"ForceChangePassword"| A3
+    A3 -->|"AddSelf"| DA
+
+    %% ---------- Chain B : ERP kerberoast ----------
+    B0["svc_erp<br/>(Kerberoast)"]:::entry
+    B1["Database Administrators"]
+    BK["Backup Team"]:::merge
+    B2["raul.b"]
+    B3["Server Administrators"]
+    B4["admin.t0<br/>(DA member)"]
+    B0 -->|"MemberOf"| B1
+    B1 -->|"GenericWrite"| BK
+    BK -->|"GenericAll"| B2
+    B2 -->|"WriteDacl"| B3
+    B3 -->|"GenericAll"| B4
+    B4 -->|"MemberOf"| DA
+
+    %% ---------- Chain C : ADCS ESC4 ----------
+    C0["Sales Department (8)<br/>noelia.s, emilio.c, ..."]:::entry
+    C1["pablo.c"]
+    C2["PKI Administrators"]
+    C3["User cert template"]
+    C0 -->|"ForceChangePassword"| C1
+    C1 -->|"GenericWrite / AddMember"| C2
+    C2 -->|"ADCSESC4"| C3
+    C3 -->|"enroll → forge cert"| DA
+
+    %% ---------- Chain D : Production / OT ----------
+    D0["Production Operators (15)"]:::entry
+    D1["Maintenance Engineers (4)"]
+    D2["ivan.o<br/>(SCADA)"]
+    D3["OT SCADA Admins"]
+    D4["GPO Managers"]
+    D0 -->|"GenericWrite"| D1
+    D1 -->|"ForceChangePassword"| D2
+    D2 -->|"GenericWrite"| D3
+    D3 -->|"WriteOwner"| D4
+    D4 -->|"WriteDacl"| DA
+
+    %% ---------- Chain E : Finance (merges into B) ----------
+    E0["Finance Department (6)<br/>marcos.v, ..."]:::entry
+    E1["backup.svc"]
+    E0 -->|"ForceChangePassword"| E1
+    E1 -->|"MemberOf"| BK
+
+    classDef entry fill:#1e5f2e,stroke:#0d3d19,color:#fff;
+    classDef merge fill:#8a5a00,stroke:#5c3c00,color:#fff;
+    classDef sink fill:#7a1020,stroke:#4d0a14,color:#fff;
+```
+
+Green = initial-access teams (many people share each path) · amber = `Backup Team`,
+the shared junction where Chains B and E converge · red = the `Domain Admins`
+target.
+
 ## Organisational structure & benign roles
 
 Department OUs (`Production`, `Warehouse`, `Sales`, `Finance`, `HR`, `Quality`,
