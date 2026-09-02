@@ -1,0 +1,69 @@
+# AdminSDHolder abuse : grant principals GenericAll over the AdminSDHolder object,
+# then force SDProp so the ACE is propagated onto every protected group
+# (Domain Admins, Enterprise Admins, Administrators, ...) immediately.
+#
+# This is how GOAD makes a durable "-> Domain Admins" escalation edge (cf.
+# lord.varys). A direct ACE on the Domain Admins group is reverted by SDProp
+# every ~60 min; an ACE on AdminSDHolder is instead COPIED onto the protected
+# groups by SDProp, so it persists and materialises as a real GenericAll edge
+# to Domain Admins in BloodHound / GrexID.
+#
+# RUN me on DC, as the domain admin (become runas) - modifying AdminSDHolder and
+# triggering SDProp both require privilege.
+#
+# vulns_vars example (per host, in config.json):
+#   "adminsdholder": {
+#     "sergio":       { "principal": "sergio.h" },
+#     "serveradmins": { "principal": "Server Administrators" },
+#     "gpomanagers":  { "principal": "GPO Managers" }
+#   }
+- name: "AdminSDHolder : grant GenericAll to '{{ item.value.principal }}'"
+  ansible.windows.win_powershell:
+    script: |
+      [CmdletBinding()]
+      param (
+          [String]
+          $Principal
+      )
+      Import-Module ActiveDirectory
+      $domainDN = (Get-ADDomain).DistinguishedName
+      $path = "AD:\CN=AdminSDHolder,CN=System,$domainDN"
+
+      $obj = Get-ADObject -Filter "SamAccountName -eq '$Principal'" -Properties objectSid
+      if (-not $obj) { throw "Principal '$Principal' not found" }
+      $sid = New-Object System.Security.Principal.SecurityIdentifier ($obj.objectSid)
+
+      $acl = Get-Acl -Path $path
+      $ace = New-Object System.DirectoryServices.ActiveDirectoryAccessRule(
+          $sid,
+          [System.DirectoryServices.ActiveDirectoryRights]"GenericAll",
+          [System.Security.AccessControl.AccessControlType]"Allow"
+      )
+      $acl.AddAccessRule($ace)
+      Set-Acl -Path $path -AclObject $acl
+      $Ansible.Changed = $true
+    error_action: stop
+    parameters:
+      Principal: "{{ item.value.principal }}"
+  vars:
+    ansible_become: yes
+    ansible_become_method: runas
+    domain_name: "{{ domain }}"
+    ansible_become_user: "{{ domain_username }}"
+    ansible_become_password: "{{ domain_password }}"
+  with_dict: "{{ vulns_vars }}"
+
+- name: "AdminSDHolder : force SDProp to propagate to protected groups now"
+  ansible.windows.win_powershell:
+    script: |
+      $root = [ADSI]"LDAP://rootDSE"
+      $root.Put("runProtectAdminGroupsTask", 1)
+      $root.SetInfo()
+      $Ansible.Changed = $true
+    error_action: stop
+  vars:
+    ansible_become: yes
+    ansible_become_method: runas
+    domain_name: "{{ domain }}"
+    ansible_become_user: "{{ domain_username }}"
+    ansible_become_password: "{{ domain_password }}"

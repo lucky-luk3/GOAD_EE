@@ -54,14 +54,14 @@ mitigation rarely closes a path — exactly what GrexID's alternatives view show
 ```
 <HR Payroll Admins, 5 members> ─ReadGMSAPassword→ gmsa_payroll$
         ─ForceChangePassword→ diego.m ─ForceChangePassword→ sergio.h
-        ─DCSync→ Domain Admins
+        ─GenericAll (via AdminSDHolder)→ Domain Admins
 ```
 
 **Chain B — ERP kerberoast → nested groups → server admins (5 hops)**
 ```
 svc_erp ─MemberOf→ Database Administrators ─GenericWrite→ Backup Team
         ─GenericAll→ raul.b ─WriteDacl→ Server Administrators
-        ─DCSync→ Domain Admins
+        ─GenericAll (via AdminSDHolder)→ Domain Admins
 ```
 
 **Chain C — Sales team (8) → Purchasing → PKI → ADCS ESC4 (5 hops)**
@@ -75,7 +75,7 @@ svc_erp ─MemberOf→ Database Administrators ─GenericWrite→ Backup Team
 ```
 <Production Operators, 15 members> ─GenericWrite→ Maintenance Engineers (4)
         ─ForceChangePassword→ ivan.o ─GenericWrite→ OT SCADA Admins
-        ─WriteOwner→ GPO Managers ─DCSync→ Domain Admins
+        ─WriteOwner→ GPO Managers ─GenericAll (via AdminSDHolder)→ Domain Admins
 ```
 
 **Chain E — Finance team (6) → backup.svc → MERGES INTO Chain B (6 hops)**
@@ -83,7 +83,7 @@ svc_erp ─MemberOf→ Database Administrators ─GenericWrite→ Backup Team
 <Finance Department, 6 members> ─ForceChangePassword→ backup.svc
         ─MemberOf→ Backup Team  ◀── merge point with Chain B
         ─GenericAll→ raul.b ─WriteDacl→ Server Administrators
-        ─DCSync→ Domain Admins
+        ─GenericAll (via AdminSDHolder)→ Domain Admins
 ```
 
 `Backup Team` is the shared junction: both the ERP path (B) and the Finance
@@ -91,7 +91,7 @@ path (E) funnel through it, so the graph shows a clear convergence.
 
 Every edge above is one that SharpHound collects and GrexID renders:
 `MemberOf, ReadGMSAPassword, ForceChangePassword, GenericWrite, AddMember,
-GenericAll, WriteDacl, WriteOwner, ADCSESC4, DCSync`.
+GenericAll, WriteDacl, WriteOwner, ADCSESC4` (terminal DA control via AdminSDHolder).
 
 ## Attack-path graph
 
@@ -107,7 +107,7 @@ flowchart LR
     A0 -->|"ReadGMSAPassword"| A1
     A1 -->|"ForceChangePassword"| A2
     A2 -->|"ForceChangePassword"| A3
-    A3 -->|"DCSync"| DA
+    A3 -->|"GenericAll<br/>(AdminSDHolder)"| DA
 
     %% ---------- Chain B : ERP kerberoast ----------
     B0["svc_erp<br/>(Kerberoast)"]:::entry
@@ -119,7 +119,7 @@ flowchart LR
     B1 -->|"GenericWrite"| BK
     BK -->|"GenericAll"| B2
     B2 -->|"WriteDacl"| B3
-    B3 -->|"DCSync"| DA
+    B3 -->|"GenericAll<br/>(AdminSDHolder)"| DA
 
     %% ---------- Chain C : ADCS ESC4 ----------
     C0["Sales Department (8)<br/>noelia.s, emilio.c, ..."]:::entry
@@ -141,7 +141,7 @@ flowchart LR
     D1 -->|"ForceChangePassword"| D2
     D2 -->|"GenericWrite"| D3
     D3 -->|"WriteOwner"| D4
-    D4 -->|"DCSync"| DA
+    D4 -->|"GenericAll<br/>(AdminSDHolder)"| DA
 
     %% ---------- Chain E : Finance (merges into B) ----------
     E0["Finance Department (6)<br/>marcos.v, ..."]:::entry
@@ -207,14 +207,16 @@ Two ESC/edge behaviours are proper GOAD vuln roles, configured from `config.json
   `GenericAll` over the published `User` template → scoped `ADCSESC4` edge. It
   must run elevated: modifying a default template's DACL needs Enterprise Admin
   rights (a plain script running as `vagrant` fails with "Access is denied").
-- `vulns/dcsync` grants replication rights
-  (`DS-Replication-Get-Changes` + `-Get-Changes-All`) on the **domain object** to
-  the terminal principals of Chains A, B/E and D (`sergio.h`,
-  `Server Administrators`, `GPO Managers`). This is the **AdminSDHolder-proof**
-  way to reach Domain Admins: ACEs placed directly on the protected `Domain
-  Admins` group (or on a DA member such as `admin.t0`) are reverted by SDProp
-  every ~60 min and never materialise, so those terminal edges use DCSync
-  instead — which BloodHound/GrexID render as full domain compromise.
+- `vulns/adminsdholder` grants the terminal principals of Chains A, B/E and D
+  (`sergio.h`, `Server Administrators`, `GPO Managers`) `GenericAll` over the
+  **AdminSDHolder** object and then **forces SDProp**. This is how GOAD makes a
+  durable `GenericAll → Domain Admins` edge (cf. `lord.varys`): a direct ACE on
+  the protected `Domain Admins` group is reverted by SDProp every ~60 min, but an
+  ACE on AdminSDHolder is *copied onto* every protected group by SDProp, so it
+  persists and materialises as a real `GenericAll → Domain Admins` edge. The
+  direct `GenericAll → Domain Admins` ACEs are also set in `config.json` (for the
+  immediate edge, GOAD-style); forcing SDProp makes the propagated copy appear at
+  once instead of waiting up to an hour.
 
 ## Deploy
 

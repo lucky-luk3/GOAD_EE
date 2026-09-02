@@ -393,15 +393,24 @@ acls = {}
 def ace(name, for_, to, right, inheritance="None"):
     acls[name] = {"for": for_, "to": to, "right": right, "inheritance": inheritance}
 
-# CHAIN A (ReadGMSAPassword edge set by scripts/gmsa_readers.ps1;
-#          terminal DCSync for sergio.h set by the dcsync vuln role)
+# Terminal "-> Domain Admins" edges (GOAD-style AdminSDHolder abuse).
+# Direct GenericAll on the Domain Admins group gives an immediate edge; the
+# adminsdholder vuln role also grants GenericAll on AdminSDHolder + forces SDProp,
+# so these persist (SDProp re-applies them from the AdminSDHolder template).
+ADMINSDH = f"CN=AdminSDHolder,CN=System,{BASE}"
+
+# CHAIN A (ReadGMSAPassword edge set by scripts/gmsa_readers.ps1)
 ace("A_gmsa_fcp_diego",       "gmsa_payroll$", "diego.m", "Ext-User-Force-Change-Password")
 ace("A_diego_fcp_sergio",     "diego.m", "sergio.h", "Ext-User-Force-Change-Password")
+ace("A_sergio_ga_da",         "sergio.h", "Domain Admins", "GenericAll")
+ace("A_sergio_ga_asdh",       "sergio.h", ADMINSDH, "GenericAll")
 
-# CHAIN B (terminal DCSync for Server Administrators set by the dcsync vuln role)
+# CHAIN B
 ace("B_dba_gw_backup",        "Database Administrators", "Backup Team", "GenericWrite")
 ace("B_backup_ga_raul",       "Backup Team", "raul.b", "GenericAll")
 ace("B_raul_wd_serveradmins", "raul.b", "Server Administrators", "WriteDacl")
+ace("B_serveradmins_ga_da",   "Server Administrators", "Domain Admins", "GenericAll")
+ace("B_serveradmins_ga_asdh", "Server Administrators", ADMINSDH, "GenericAll")
 
 # CHAIN C (ADCSESC4 edge set by scripts/esc4.ps1)
 ace("C_sales_fcp_pablo",      "Sales Department", "pablo.c", "Ext-User-Force-Change-Password")
@@ -412,7 +421,8 @@ ace("D_prod_gw_maint",        "Production Operators", "Maintenance Engineers", "
 ace("D_maint_fcp_ivan",       "Maintenance Engineers", "ivan.o", "Ext-User-Force-Change-Password")
 ace("D_ivan_gw_scada",        "ivan.o", "OT SCADA Admins", "GenericWrite")
 ace("D_scada_wo_gpo",         "OT SCADA Admins", "GPO Managers", "WriteOwner")
-# terminal DCSync for GPO Managers set by the dcsync vuln role
+ace("D_gpo_ga_da",            "GPO Managers", "Domain Admins", "GenericAll")
+ace("D_gpo_ga_asdh",          "GPO Managers", ADMINSDH, "GenericAll")
 
 # CHAIN E : Finance team -> backup.svc, which is a member of Backup Team
 #           => the path MERGES into CHAIN B at the "Backup Team" node.
@@ -441,7 +451,7 @@ config = {
                 "local_admin_password": DOMAIN_PASSWORD, "domain": DOMAIN,
                 "path": BASE,
                 "scripts": ["attributes.ps1", "gmsa_readers.ps1"],
-                "vulns": ["disable_firewall", "adcs_esc4", "dcsync"],
+                "vulns": ["disable_firewall", "adcs_esc4", "adminsdholder"],
                 "vulns_vars": {
                     "adcs_esc4": {
                         # CHAIN C : scoped ESC4 (PKI Administrators only, not
@@ -451,11 +461,14 @@ config = {
                             "adcs_esc4_template": "User",
                         }
                     },
-                    # Terminal DA edges via DCSync (durable, AdminSDHolder-proof).
-                    # Replaces AddSelf/WriteDacl on the protected Domain Admins
-                    # group and GenericAll on a protected DA member (admin.t0),
-                    # which SDProp reverts and therefore never materialise.
-                    "dcsync": {
+                    # Terminal DA edges via AdminSDHolder abuse (GOAD-style).
+                    # The role grants each principal GenericAll on AdminSDHolder
+                    # and forces SDProp, which COPIES that ACE onto Domain Admins
+                    # (and every protected group) durably -> real GenericAll edge
+                    # to Domain Admins. This is what makes the direct
+                    # "GenericAll -> Domain Admins" ACEs below persist instead of
+                    # being reverted by SDProp.
+                    "adminsdholder": {
                         "sergio":       {"principal": "sergio.h"},              # Chain A
                         "serveradmins": {"principal": "Server Administrators"}, # Chains B + E
                         "gpomanagers":  {"principal": "GPO Managers"},          # Chain D

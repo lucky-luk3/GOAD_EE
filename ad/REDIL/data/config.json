@@ -14,7 +14,7 @@
                 "vulns": [
                     "disable_firewall",
                     "adcs_esc4",
-                    "dcsync"
+                    "adminsdholder"
                 ],
                 "vulns_vars": {
                     "adcs_esc4": {
@@ -23,7 +23,7 @@
                             "adcs_esc4_template": "User"
                         }
                     },
-                    "dcsync": {
+                    "adminsdholder": {
                         "sergio": {
                             "principal": "sergio.h"
                         },
@@ -290,6 +290,18 @@
                         "right": "Ext-User-Force-Change-Password",
                         "inheritance": "None"
                     },
+                    "A_sergio_ga_da": {
+                        "for": "sergio.h",
+                        "to": "Domain Admins",
+                        "right": "GenericAll",
+                        "inheritance": "None"
+                    },
+                    "A_sergio_ga_asdh": {
+                        "for": "sergio.h",
+                        "to": "CN=AdminSDHolder,CN=System,DC=redil,DC=local",
+                        "right": "GenericAll",
+                        "inheritance": "None"
+                    },
                     "B_dba_gw_backup": {
                         "for": "Database Administrators",
                         "to": "Backup Team",
@@ -306,6 +318,18 @@
                         "for": "raul.b",
                         "to": "Server Administrators",
                         "right": "WriteDacl",
+                        "inheritance": "None"
+                    },
+                    "B_serveradmins_ga_da": {
+                        "for": "Server Administrators",
+                        "to": "Domain Admins",
+                        "right": "GenericAll",
+                        "inheritance": "None"
+                    },
+                    "B_serveradmins_ga_asdh": {
+                        "for": "Server Administrators",
+                        "to": "CN=AdminSDHolder,CN=System,DC=redil,DC=local",
+                        "right": "GenericAll",
                         "inheritance": "None"
                     },
                     "C_sales_fcp_pablo": {
@@ -342,6 +366,18 @@
                         "for": "OT SCADA Admins",
                         "to": "GPO Managers",
                         "right": "WriteOwner",
+                        "inheritance": "None"
+                    },
+                    "D_gpo_ga_da": {
+                        "for": "GPO Managers",
+                        "to": "Domain Admins",
+                        "right": "GenericAll",
+                        "inheritance": "None"
+                    },
+                    "D_gpo_ga_asdh": {
+                        "for": "GPO Managers",
+                        "to": "CN=AdminSDHolder,CN=System,DC=redil,DC=local",
+                        "right": "GenericAll",
                         "inheritance": "None"
                     },
                     "E_finance_fcp_backupsvc": {
