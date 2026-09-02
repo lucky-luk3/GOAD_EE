@@ -9,12 +9,20 @@
                 "path": "DC=redil,DC=local",
                 "scripts": [
                     "attributes.ps1",
-                    "gmsa_readers.ps1",
-                    "esc4.ps1"
+                    "gmsa_readers.ps1"
                 ],
                 "vulns": [
-                    "disable_firewall"
-                ]
+                    "disable_firewall",
+                    "adcs_esc4"
+                ],
+                "vulns_vars": {
+                    "adcs_esc4": {
+                        "esc4": {
+                            "adcs_esc4_group": "PKI Administrators",
+                            "adcs_esc4_template": "User"
+                        }
+                    }
+                }
             }
         },
         "domains": {

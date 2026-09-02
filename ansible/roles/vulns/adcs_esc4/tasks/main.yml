@@ -1,0 +1,53 @@
+# ADCS ESC4 : grant a group dangerous write control (GenericAll) over a
+# published certificate template. A principal with write control over a
+# published, enrollable template can reconfigure it (e.g. into an ESC1) and
+# escalate to Domain Admin. This materialises an ADCSESC4 edge in
+# BloodHound / GrexID, scoped to the given group (not "Domain Users").
+#
+# RUN me on DC. Must run as the domain admin (become runas): modifying the DACL
+# of a default/published template requires Enterprise Admin rights, so running as
+# the winrm user (vagrant) fails with "Access is denied".
+#
+# vulns_vars example (per host, in config.json):
+#   "adcs_esc4": {
+#     "esc4": { "adcs_esc4_group": "PKI Administrators", "adcs_esc4_template": "User" }
+#   }
+- name: "ADCS ESC4 : grant '{{ item.value.adcs_esc4_group }}' GenericAll over template '{{ item.value.adcs_esc4_template }}'"
+  ansible.windows.win_powershell:
+    script: |
+      [CmdletBinding()]
+      param (
+          [String]
+          $GroupName,
+
+          [String]
+          $TemplateName
+      )
+      Import-Module ActiveDirectory
+      $configNC = (Get-ADRootDSE).configurationNamingContext
+      $templateDN = "CN=$TemplateName,CN=Certificate Templates,CN=Public Key Services,CN=Services,$configNC"
+
+      $grp = Get-ADGroup -Identity $GroupName
+      $sid = [System.Security.Principal.SecurityIdentifier] $grp.SID
+
+      $path = "AD:\$templateDN"
+      $acl = Get-Acl -Path $path
+      $ace = New-Object System.DirectoryServices.ActiveDirectoryAccessRule(
+          $sid,
+          [System.DirectoryServices.ActiveDirectoryRights]"GenericAll",
+          [System.Security.AccessControl.AccessControlType]"Allow"
+      )
+      $acl.AddAccessRule($ace)
+      Set-Acl -Path $path -AclObject $acl
+      $Ansible.Changed = $true
+    error_action: stop
+    parameters:
+      GroupName: "{{ item.value.adcs_esc4_group }}"
+      TemplateName: "{{ item.value.adcs_esc4_template }}"
+  vars:
+    ansible_become: yes
+    ansible_become_method: runas
+    domain_name: "{{ domain }}"
+    ansible_become_user: "{{ domain_username }}"
+    ansible_become_password: "{{ domain_password }}"
+  with_dict: "{{ vulns_vars }}"

@@ -441,8 +441,18 @@ config = {
                 "hostname": DC_HOSTNAME, "type": "dc",
                 "local_admin_password": DOMAIN_PASSWORD, "domain": DOMAIN,
                 "path": BASE,
-                "scripts": ["attributes.ps1", "gmsa_readers.ps1", "esc4.ps1"],
-                "vulns": ["disable_firewall"],
+                "scripts": ["attributes.ps1", "gmsa_readers.ps1"],
+                "vulns": ["disable_firewall", "adcs_esc4"],
+                "vulns_vars": {
+                    "adcs_esc4": {
+                        # CHAIN C : scoped ESC4 (PKI Administrators only, not
+                        # Domain Users). Runs as domain admin via the role.
+                        "esc4": {
+                            "adcs_esc4_group": "PKI Administrators",
+                            "adcs_esc4_template": "User",
+                        }
+                    }
+                },
             }
         },
         "domains": {

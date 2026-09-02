@@ -134,8 +134,13 @@ AS-REP/kerberoastable footholds, so cracking them leads straight into a chain.
   `passwordnotreqd` flags.
 - `scripts/gmsa_readers.ps1` — grants `HR Payroll Admins` read access to the
   `gmsa_payroll` managed password → `ReadGMSAPassword` edge.
-- `scripts/esc4.ps1` — grants `PKI Administrators` `GenericAll` over an existing
-  published template (`User`) → scoped `ADCSESC4` edge.
+
+The scoped **ESC4** is a proper GOAD vuln role, `vulns/adcs_esc4` (modelled on
+`vulns/adcs_esc7`), configured from `config.json` (`vulns` + `vulns_vars`). It
+runs as the domain admin (`become: runas`) and grants `PKI Administrators`
+`GenericAll` over the published `User` template → scoped `ADCSESC4` edge. It must
+run elevated: modifying a default template's DACL needs Enterprise Admin rights,
+so the earlier plain-script approach failed with "Access is denied".
 
 ## Deploy
 
