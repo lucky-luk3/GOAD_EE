@@ -414,7 +414,7 @@
                     "lucia.g": {
                         "firstname": "Lucia",
                         "surname": "Garcia",
-                        "password": "Lucia2021",
+                        "password": "Palencia2024",
                         "city": "Villalon de Campos",
                         "description": "Responsable de nominas (AS-REP roastable)",
                         "groups": [
@@ -430,7 +430,7 @@
                     "marta.b": {
                         "firstname": "Marta",
                         "surname": "Blanco",
-                        "password": "Marta2020",
+                        "password": "Villalon2024",
                         "city": "Villalon de Campos",
                         "description": "Tecnico de nominas (AS-REP roastable)",
                         "groups": [
@@ -570,7 +570,7 @@
                     "manuel.v": {
                         "firstname": "Manuel",
                         "surname": "Vidal",
-                        "password": "ManuelVidal2019",
+                        "password": "Password1",
                         "city": "Villalon de Campos",
                         "description": "HR Department - empleado",
                         "groups": [
@@ -681,7 +681,7 @@
                     "noelia.s": {
                         "firstname": "Noelia",
                         "surname": "Sanz",
-                        "password": "Noelia2022",
+                        "password": "Verano2024",
                         "city": "Villalon de Campos",
                         "description": "Comercial de zona norte (AS-REP roastable)",
                         "groups": [
@@ -696,7 +696,7 @@
                     "emilio.c": {
                         "firstname": "Emilio",
                         "surname": "Cortes",
-                        "password": "Emilio2021",
+                        "password": "PataDeMula",
                         "city": "Villalon de Campos",
                         "description": "Comercial de exportacion (AS-REP roastable)",
                         "groups": [
@@ -1210,7 +1210,7 @@
                     "marcos.v": {
                         "firstname": "Marcos",
                         "surname": "Vega",
-                        "password": "Marcos2020",
+                        "password": "Password123",
                         "city": "Villalon de Campos",
                         "description": "Contable senior (cuenta antigua, sin preautenticacion)",
                         "groups": [
@@ -1351,7 +1351,7 @@
                     "svc_web": {
                         "firstname": "Service",
                         "surname": "Web",
-                        "password": "W3b$vc_2020",
+                        "password": "Empresa2024",
                         "city": "Villalon de Campos",
                         "description": "Cuenta de servicio del portal de pedidos",
                         "groups": [
@@ -1405,7 +1405,7 @@
                     "maria.ve": {
                         "firstname": "Maria",
                         "surname": "Vela",
-                        "password": "MariaVela2022",
+                        "password": "Qwerty123",
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
@@ -1431,7 +1431,7 @@
                     "carmen.fe": {
                         "firstname": "Carmen",
                         "surname": "Ferrer",
-                        "password": "CarmenFerrer2018",
+                        "password": "Fromista2024",
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
@@ -1444,7 +1444,7 @@
                     "jose.su": {
                         "firstname": "Jose",
                         "surname": "Suarez",
-                        "password": "JoseSuarez2019",
+                        "password": "CalleMayor1",
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
@@ -1484,7 +1484,7 @@
                     "laura.pa": {
                         "firstname": "Laura",
                         "surname": "Pascual",
-                        "password": "LauraPascual2023",
+                        "password": "CampoGotico",
                         "city": "Villalon de Campos",
                         "description": "Tecnico de laboratorio/calidad",
                         "groups": [
@@ -1555,7 +1555,7 @@
                     "javier.co": {
                         "firstname": "Javier",
                         "surname": "Cortes",
-                        "password": "JavierCortes2023",
+                        "password": "Palomares1",
                         "city": "Villalon de Campos",
                         "description": "Tecnico de marketing",
                         "groups": [
@@ -1826,7 +1826,7 @@
                     "raquel.nu": {
                         "firstname": "Raquel",
                         "surname": "Nunez",
-                        "password": "RaquelNunez2020",
+                        "password": "Redil2024",
                         "city": "Villalon de Campos",
                         "description": "Operario de linea (envasado/curado)",
                         "groups": [
@@ -2162,7 +2162,7 @@
                     "ana.h2": {
                         "firstname": "Ana",
                         "surname": "Herrera",
-                        "password": "AnaHerrera2020",
+                        "password": "RolloDeVillalon",
                         "city": "Villalon de Campos",
                         "description": "Operario de linea (envasado/curado)",
                         "groups": [
@@ -2273,7 +2273,7 @@
                     "elena.s2": {
                         "firstname": "Elena",
                         "surname": "Soto",
-                        "password": "ElenaSoto2018",
+                        "password": "Becerril2024",
                         "city": "Villalon de Campos",
                         "description": "Logistica y transporte",
                         "groups": [
@@ -2338,7 +2338,7 @@
                     "miguel.p2": {
                         "firstname": "Miguel",
                         "surname": "Prieto",
-                        "password": "MiguelPrieto2023",
+                        "password": "Admin1234",
                         "city": "Villalon de Campos",
                         "description": "Logistica y transporte",
                         "groups": [
@@ -2364,7 +2364,7 @@
                     "angel.r2": {
                         "firstname": "Angel",
                         "surname": "Reyes",
-                        "password": "AngelReyes2019",
+                        "password": "QuesoDeVillalon",
                         "city": "Villalon de Campos",
                         "description": "Logistica y transporte",
                         "groups": [
@@ -2403,7 +2403,7 @@
                     "beatriz.s2": {
                         "firstname": "Beatriz",
                         "surname": "Serrano",
-                        "password": "BeatrizSerrano2022",
+                        "password": "CanalDeCastilla",
                         "city": "Villalon de Campos",
                         "description": "Logistica y transporte",
                         "groups": [
@@ -2430,7 +2430,7 @@
                     "patricia.p2": {
                         "firstname": "Patricia",
                         "surname": "Pardo",
-                        "password": "PatriciaPardo2019",
+                        "password": "Invierno2024",
                         "city": "Villalon de Campos",
                         "description": "Auditor de calidad / APPCC",
                         "groups": [
@@ -2531,7 +2531,7 @@
                     "adrian.c2": {
                         "firstname": "Adrian",
                         "surname": "Cano",
-                        "password": "AdrianCano2020",
+                        "password": "TierraDeCampos",
                         "city": "Villalon de Campos",
                         "description": "Atencion al cliente",
                         "groups": [
@@ -2606,7 +2606,7 @@
                     "alicia.g2": {
                         "firstname": "Alicia",
                         "surname": "Gallego",
-                        "password": "AliciaGallego2019",
+                        "password": "CristoDelOtero",
                         "city": "Villalon de Campos",
                         "description": "Atencion al cliente",
                         "groups": [
@@ -2636,7 +2636,7 @@
                     "irene.s2": {
                         "firstname": "Irene",
                         "surname": "Santos",
-                        "password": "IreneSantos2022",
+                        "password": "LaOlmeda2024",
                         "city": "Villalon de Campos",
                         "description": "Back office comercial",
                         "groups": [
@@ -2776,7 +2776,7 @@
                     "ismael.r2": {
                         "firstname": "Ismael",
                         "surname": "Roman",
-                        "password": "IsmaelRoman2025",
+                        "password": "Ampudia2024",
                         "city": "Villalon de Campos",
                         "description": "Cuentas a cobrar",
                         "groups": [
@@ -2928,7 +2928,7 @@
                     "francisco.i3": {
                         "firstname": "Francisco",
                         "surname": "Iglesias",
-                        "password": "FranciscoIglesias2024",
+                        "password": "Carrion2024",
                         "city": "Villalon de Campos",
                         "description": "Marketing digital",
                         "groups": [
@@ -3018,7 +3018,7 @@
                     "daniel.f3": {
                         "firstname": "Daniel",
                         "surname": "Franco",
-                        "password": "DanielFranco2025",
+                        "password": "ParedesDeNava",
                         "city": "Villalon de Campos",
                         "description": "Becario de IT",
                         "groups": [
@@ -3048,7 +3048,7 @@
                     "sergio.m3": {
                         "firstname": "Sergio",
                         "surname": "Marin",
-                        "password": "SergioMarin2023",
+                        "password": "Usuario2024",
                         "city": "Villalon de Campos",
                         "description": "Servicios generales",
                         "groups": [
@@ -3137,7 +3137,7 @@
                     "pedro.n3": {
                         "firstname": "Pedro",
                         "surname": "Navarro",
-                        "password": "PedroNavarro2025",
+                        "password": "Primavera2024",
                         "city": "Villalon de Campos",
                         "description": "I+D nuevos productos",
                         "groups": [
@@ -3217,7 +3217,7 @@
                     "ruben.l3": {
                         "firstname": "Ruben",
                         "surname": "Leon",
-                        "password": "RubenLeon2027",
+                        "password": "Cambiame1",
                         "city": "Villalon de Campos",
                         "description": "Contratista externo (temporal)",
                         "groups": [
@@ -3277,7 +3277,7 @@
                     "natalia.r3": {
                         "firstname": "Natalia",
                         "surname": "Rojas",
-                        "password": "NataliaRojas2026",
+                        "password": "Bienvenido1",
                         "city": "Villalon de Campos",
                         "description": "Contratista externo (temporal)",
                         "groups": [

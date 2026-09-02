@@ -117,6 +117,17 @@ them reach Domain Admin):
   `GenericAll` over the `All Staff` distribution list; `Department Heads`/`HR`
   have read-only visibility over certain OUs.
 
+## Password / dictionary test set
+
+~14% of accounts carry deliberately weak passwords — some typical dictionary
+entries (`Password123`, `Verano2024`…) and some derived from the local context
+(Palencia, Villalón de Campos, Tierra de Campos and nearby monuments:
+`Villalon2024`, `RolloDeVillalon`, `PataDeMula`, `CristoDelOtero`,
+`CanalDeCastilla`, `LaOlmeda2024`…). This is meant to exercise **GrexID's
+dictionary generation and password audit**. See `PASSWORD_TESTSET.md` for the
+seed terms and the ground-truth crackable accounts. Several sit on
+AS-REP/kerberoastable footholds, so cracking them leads straight into a chain.
+
 ## Custom scripts (run on the DC, after AD data + ACLs)
 
 - `scripts/attributes.ps1` — sets AS-REP roasting (`DoesNotRequirePreAuth`) and

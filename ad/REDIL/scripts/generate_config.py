@@ -324,6 +324,61 @@ for _mgr in ["carlos.f", "admin.t0"]:
     users[_mgr]["groups"].append("Department Heads")
 
 # ---------------------------------------------------------------------------
+# Weak / themed passwords (to exercise GrexID's dictionary generation & audit).
+# NOT for everyone - just a subset. Two flavours:
+#   * typical dictionary passwords (season+year, "Password123", keyboard walks)
+#   * passwords derived from the local context: Palencia, Villalon de Campos,
+#     Tierra de Campos and nearby monuments/heritage (the kind a good OSINT
+#     dictionary generator should synthesise from the company's location).
+# The generator should crack these; the rest keep name+year style passwords.
+# ---------------------------------------------------------------------------
+DICTIONARY_PWDS = [
+    "Password123", "Password1", "Qwerty123", "Admin1234", "Bienvenido1",
+    "Verano2024", "Invierno2024", "Primavera2024", "Empresa2024", "Redil2024",
+    "Cambiame1", "Usuario2024",
+]
+REGIONAL_PWDS = [  # Palencia / Villalon de Campos / Tierra de Campos / heritage
+    "Palencia2024", "Villalon2024", "TierraDeCampos", "CristoDelOtero",
+    "RolloDeVillalon", "PataDeMula", "QuesoDeVillalon", "CanalDeCastilla",
+    "Fromista2024", "ParedesDeNava", "Becerril2024", "Carrion2024",
+    "LaOlmeda2024", "Ampudia2024", "Palomares1", "CalleMayor1", "CampoGotico",
+]
+
+# Explicit weak passwords on a few footholds, so cracking a roastable hash with
+# the generated dictionary directly yields an entry into a chain.
+EXPLICIT_WEAK = {
+    "lucia.g": "Palencia2024",     # HR Payroll (AS-REP) -> Chain A
+    "marta.b": "Villalon2024",     # HR Payroll (AS-REP) -> Chain A
+    "noelia.s": "Verano2024",      # Sales (AS-REP)      -> Chain C
+    "emilio.c": "PataDeMula",      # Sales (AS-REP)      -> Chain C
+    "marcos.v": "Password123",     # Finance (AS-REP)    -> Chain E
+    "svc_web":  "Empresa2024",     # weak service account (kerberoastable)
+}
+for _lg, _pw in EXPLICIT_WEAK.items():
+    if _lg in users:
+        users[_lg]["password"] = _pw
+
+# Spread the remaining themed passwords across ordinary (path-less) staff.
+_PRIV = {"Tier0 Admins", "Domain Admins", "Server Administrators",
+         "Database Administrators", "Backup Team", "PKI Administrators",
+         "GPO Managers", "Helpdesk Operators", "OT SCADA Admins",
+         "HR Payroll Admins", "Sales Department", "Finance Department",
+         "Production Operators", "Maintenance Engineers"}
+_used_pw = set(EXPLICIT_WEAK.values())
+_remaining = [p for p in (REGIONAL_PWDS + DICTIONARY_PWDS) if p not in _used_pw]
+_pool = sorted(
+    lg for lg, u in users.items()
+    if not (set(u["groups"]) & _PRIV)
+    and u["path"].split(",")[0] not in ("OU=ServiceAccounts", "OU=SharedAccounts",
+                                         "OU=DisabledAccounts")
+    and lg not in EXPLICIT_WEAK
+)
+if _pool:
+    _step = max(1, len(_pool) // len(_remaining))
+    for _i, _pw in enumerate(_remaining):
+        users[_pool[(_i * _step) % len(_pool)]]["password"] = _pw
+
+# ---------------------------------------------------------------------------
 # gMSA (payroll). HR Payroll Admins is granted read via scripts/gmsa_readers.ps1
 # ---------------------------------------------------------------------------
 gmsa = {"gmsa_payroll": {"gMSA_Name": "gmsa_payroll",
