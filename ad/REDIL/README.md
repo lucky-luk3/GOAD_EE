@@ -30,6 +30,11 @@ analysis has a rich, attractive graph to show.
   `Production Operators` walk Chain D. ~43 low-privilege users have a ≥5-hop path.
 - **Paths converge** on a few choke groups (great for GrexID's choke-point view),
   and **Chain E merges into Chain B at the `Backup Team` node**.
+- **Some users have MANY paths** (legacy permission accumulation): a few IT
+  admins sit in several privileged groups / carry stale ACEs, and cross-link
+  ACEs interconnect the chains, so **~46 users reach DA ≥2 different ways**.
+- **Multi-level OU tree** (`OU=REDIL > Users/Admin/Groups/... > dept > ...`, up to
+  4 levels), not a flat single level.
 - **No "everyone → Domain Admin" path.** The ADCS abuse is **ESC4 scoped to the
   `PKI Administrators` group only** — we deliberately do *not* publish GOAD's
   ESC1/ESC2/ESC9/ESC13 templates (those grant enrolment to `Domain Users`).
@@ -158,14 +163,77 @@ Green = initial-access teams (many people share each path) · amber = `Backup Te
 the shared junction where Chains B and E converge · red = the `Domain Admins`
 target.
 
+## Users with multiple escalation paths (legacy accumulation)
+
+Real environments have admins who, over the years, were dropped into several
+privileged groups or handed one-off ACEs that were never cleaned up — so they
+reach Domain Admin **several different ways**. GrexID flags these. In REDIL:
+
+- **`raquel.dsi`** — member of `Database Administrators` + `Backup Team` +
+  `GPO Managers` (≈7 distinct paths to DA).
+- **`nacho.dsi`** — member of `Server Administrators` + `PKI Administrators`
+  (Chain B terminal *and* the ESC4 route).
+- **`sonia.legacy`** — no privileged group membership, but three stale direct
+  ACEs: `GenericAll` on `Backup Team`, `GenericWrite` on `PKI Administrators`,
+  `ForceChangePassword` on `sergio.h` (≈6 paths — pure ACL sprawl).
+
+On top of that, **cross-link ACEs** interconnect the chains so ordinary pivots
+also gain alternative routes (dashed edges below): `raul.b → GPO Managers`,
+`OT SCADA Admins → Backup Team`, `PKI Administrators → GPO Managers`. In total
+**~46 users have ≥2 distinct paths** to Domain Admins.
+
+```mermaid
+flowchart LR
+    DA(["Domain Admins"]):::sink
+    BK["Backup Team"]:::merge
+    SA["Server Administrators"]
+    GPO["GPO Managers"]
+    PKI["PKI Administrators"]
+    RAUL["raul.b"]
+    SCADA["OT SCADA Admins"]
+    SERGIO["sergio.h"]
+
+    RAUL -->|"WriteDacl"| SA
+    RAUL -.->|"GenericWrite (alt)"| GPO
+    SCADA -->|"WriteOwner"| GPO
+    SCADA -.->|"GenericAll (alt)"| BK
+    PKI -->|"ADCSESC4"| DA
+    PKI -.->|"GenericWrite (alt)"| GPO
+    BK -->|"GenericAll"| RAUL
+    SA -->|"GenericAll (AdminSDHolder)"| DA
+    GPO -->|"GenericAll (AdminSDHolder)"| DA
+    SERGIO -->|"GenericAll (AdminSDHolder)"| DA
+
+    classDef merge fill:#8a5a00,stroke:#5c3c00,color:#fff;
+    classDef sink fill:#7a1020,stroke:#4d0a14,color:#fff;
+```
+
 ## Organisational structure & benign roles
 
-Department OUs (`Production`, `Warehouse`, `Sales`, `Finance`, `HR`, `Quality`,
-`Maintenance`, `Purchasing`, `Marketing`, `Management`, `IT`, `Tier0`) plus
-org-wide OUs the admin created with good intent: `ServiceAccounts`,
-`SharedAccounts`, `Contractors`, `DisabledAccounts`, `Groups`. Structure is
-deliberately a bit inconsistent (some groups in `OU=Groups`, the original ones
-still in department OUs) — a company that is maturing, not fully mature.
+A **multi-level OU tree** (not flat), the way a real company grows its AD:
+
+```
+OU=REDIL
+├── OU=Users
+│   ├── OU=Production   OU=Sales     OU=Finance   OU=HR
+│   ├── OU=Quality      OU=Marketing OU=Purchasing
+│   └── OU=Maintenance  OU=Warehouse OU=Management
+├── OU=Admin
+│   ├── OU=Tier0
+│   ├── OU=IT
+│   │   └── OU=Administration   ← 4th level: legacy IT-admin accounts
+│   └── OU=Servers
+├── OU=Groups
+│   ├── OU=Security       ← security groups
+│   └── OU=Distribution   ← All Staff / All Managers / Department Heads
+├── OU=ServiceAccounts
+├── OU=SharedAccounts
+├── OU=Contractors
+└── OU=Disabled          ← leavers (disabled accounts)
+```
+
+Benign, **non-escalating** groups and permissions (present for realism, none of
+them reach Domain Admin):
 
 Benign, **non-escalating** groups and permissions (present for realism, none of
 them reach Domain Admin):

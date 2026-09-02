@@ -24,16 +24,53 @@ BASE = "DC=redil,DC=local"
 DOMAIN_PASSWORD = "R3dilQu3s0s-2024"
 DC_HOSTNAME = "REDILDC01"
 
-def ou_path(*ous):
-    return ",".join([f"OU={o}" for o in ous] + [BASE])
+# ---------------------------------------------------------------------------
+# Organisational Units — a multi-level tree (not flat), the way a real company
+# grows its AD:  REDIL > {Users > <dept>, Admin > {Tier0,IT,Servers}, Groups >
+# {Security,Distribution}, ServiceAccounts, SharedAccounts, Contractors, Disabled}
+# ---------------------------------------------------------------------------
+def ou_dn(*names):
+    """Full DN from a top-down OU list, e.g. ('REDIL','Users','Production')."""
+    return ",".join(f"OU={n}" for n in reversed(names)) + "," + BASE
 
-# ---------------------------------------------------------------------------
-# Organisational Units
-# ---------------------------------------------------------------------------
-OUS = ["Tier0", "IT", "Servers", "Management", "HR", "Finance", "Sales",
-       "Purchasing", "Production", "Maintenance", "Warehouse", "Quality",
-       "Marketing", "ServiceAccounts"]
-organisation_units = {ou: {"path": BASE} for ou in OUS}
+# Logical department name -> its OU path (top-down). ou_path(dept) resolves it.
+DEPT_PATH = {
+    "Management":      ["REDIL", "Users", "Management"],
+    "HR":              ["REDIL", "Users", "HR"],
+    "Finance":         ["REDIL", "Users", "Finance"],
+    "Sales":           ["REDIL", "Users", "Sales"],
+    "Purchasing":      ["REDIL", "Users", "Purchasing"],
+    "Production":      ["REDIL", "Users", "Production"],
+    "Maintenance":     ["REDIL", "Users", "Maintenance"],
+    "Warehouse":       ["REDIL", "Users", "Warehouse"],
+    "Quality":         ["REDIL", "Users", "Quality"],
+    "Marketing":       ["REDIL", "Users", "Marketing"],
+    "IT":              ["REDIL", "Admin", "IT"],
+    "ITAdmin":         ["REDIL", "Admin", "IT", "Administration"],   # 4th level
+    "Tier0":           ["REDIL", "Admin", "Tier0"],
+    "Servers":         ["REDIL", "Admin", "Servers"],
+    "ServiceAccounts": ["REDIL", "ServiceAccounts"],
+    "SharedAccounts":  ["REDIL", "SharedAccounts"],
+    "DisabledAccounts": ["REDIL", "Disabled"],
+    "Contractors":     ["REDIL", "Contractors"],
+    "Groups":          ["REDIL", "Groups", "Security"],
+}
+DIST_OU = ou_dn("REDIL", "Groups", "Distribution")
+
+def ou_path(dept):
+    return ou_dn(*DEPT_PATH[dept])
+
+# Build the OU objects parent-first (ADOrganizationalUnit DSC needs the parent to
+# exist), ordered by depth so every parent is created before its children.
+_all_ou_paths = set()
+for _pl in list(DEPT_PATH.values()) + [["REDIL", "Groups", "Distribution"]]:
+    for _i in range(1, len(_pl) + 1):
+        _all_ou_paths.add(tuple(_pl[:_i]))
+organisation_units = {}
+for _pl in sorted(_all_ou_paths, key=lambda t: (len(t), t)):
+    organisation_units[_pl[-1]] = {
+        "path": ou_dn(*_pl[:-1]) if len(_pl) > 1 else BASE
+    }
 
 # ---------------------------------------------------------------------------
 # Groups (descriptive English names)
@@ -227,6 +264,26 @@ add_team(4, "Marketing", ["Marketing Team"], 2020, "Tecnico de marketing")
 add_team(2, "Management", ["Management Board"], 2017, "Direccion")
 
 # ===========================================================================
+# MULTI-PATH IT ADMINS  -  legacy permission accumulation.
+# Over the years these admins were added to several privileged groups / given
+# several ACEs "to get something done", and it was never cleaned up. Each ends up
+# with MULTIPLE independent paths to Domain Admins (what GrexID flags as users
+# with several escalation routes). They live in a 4th-level OU (Admin/IT/Administration).
+# ===========================================================================
+# raquel.dsi : in 3 privileged groups at once (B via DBAs, B via Backup Team,
+#              D-tail via GPO Managers)
+add_user("raquel.dsi", "Raquel", "Dominguez", "ITAdmin",
+         ["Database Administrators", "Backup Team", "GPO Managers"],
+         "Rd0m1nguez!Dsi", "Administradora de sistemas senior (permisos acumulados desde 2015)")
+# nacho.dsi : Server Administrators (direct) + PKI Administrators (ESC4)
+add_user("nacho.dsi", "Ignacio", "Duran", "ITAdmin",
+         ["Server Administrators", "PKI Administrators"],
+         "N4cho_Infra#21", "Administrador de infraestructura y PKI")
+# sonia.legacy : no privileged group membership, but three legacy ACEs (below)
+add_user("sonia.legacy", "Sonia", "Vela", "ITAdmin",
+         ["IT Support"], "S0nia-L3gacy", "Cuenta tecnica heredada (ACLs directas acumuladas)")
+
+# ===========================================================================
 # REALISM POPULATION  -  accounts & groups WITHOUT any path to Domain Admin.
 # Reflects a real, well-intentioned but not-very-mature company: department OUs
 # exist, service/shared/contractor/disabled accounts are separated, role and
@@ -234,11 +291,6 @@ add_team(2, "Management", ["Management Board"], 2017, "Direccion")
 # a central "Groups" OU, some still in department OUs).
 # Goal: keep users with a DA path at ~20-30% of the company.
 # ===========================================================================
-# --- extra organisational units (good intention, moderate maturity) --------
-for _ou in ["Contractors", "SharedAccounts", "DisabledAccounts", "Groups"]:
-    OUS.append(_ou)
-    organisation_units[_ou] = {"path": BASE}
-
 # --- benign groups (role + resource + distribution), all in OU=Groups -------
 BENIGN_GROUPS = [
     # department sub-role groups (people, no escalation ACE)
@@ -257,6 +309,9 @@ BENIGN_GROUPS = [
 ]
 for _g in BENIGN_GROUPS:
     groups["global"][_g] = {"path": ou_path("Groups")}
+# distribution / org-wide groups live under OU=Distribution,OU=Groups
+for _dg in ["All Staff", "All Managers", "Department Heads"]:
+    groups["global"][_dg]["path"] = DIST_OU
 
 # --- path-less population across the company --------------------------------
 add_team(40, "Production", ["Production Line Workers"], 2016, "Operario de linea (envasado/curado)")
@@ -299,7 +354,7 @@ office_ous = {"Sales", "Finance", "HR", "Marketing", "Purchasing", "IT", "Manage
 for login, u in list(users.items()):
     ou = _ou_of(login)
     grps = u["groups"]
-    if ou == "DisabledAccounts":
+    if ou == "Disabled":
         continue
     if "All Staff" not in grps:
         grps.append("All Staff")
@@ -370,7 +425,7 @@ _pool = sorted(
     lg for lg, u in users.items()
     if not (set(u["groups"]) & _PRIV)
     and u["path"].split(",")[0] not in ("OU=ServiceAccounts", "OU=SharedAccounts",
-                                         "OU=DisabledAccounts")
+                                         "OU=Disabled")
     and lg not in EXPLICIT_WEAK
 )
 if _pool:
@@ -428,18 +483,32 @@ ace("D_gpo_ga_asdh",          "GPO Managers", ADMINSDH, "GenericAll")
 #           => the path MERGES into CHAIN B at the "Backup Team" node.
 ace("E_finance_fcp_backupsvc", "Finance Department", "backup.svc", "Ext-User-Force-Change-Password")
 
+# --- ALTERNATIVE / CROSS-LINK routes (so many users have MULTIPLE paths to DA,
+#     and chains interconnect - realistic legacy sprawl) ---------------------
+# raul.b (Chain B mid) can also seize GPO Managers -> a 2nd way up from raul.b.
+ace("X_raul_gw_gpo",          "raul.b", "GPO Managers", "GenericWrite")
+# OT SCADA Admins (Chain D) can also seize Backup Team -> jump into Chain B.
+ace("X_scada_ga_backup",      "OT SCADA Admins", "Backup Team", "GenericAll")
+# PKI Administrators (Chain C) can also seize GPO Managers -> 2nd route besides ESC4.
+ace("X_pki_gw_gpo",           "PKI Administrators", "GPO Managers", "GenericWrite")
+
+# --- sonia.legacy : three independent legacy ACEs (pure ACL accumulation) ----
+ace("L_sonia_ga_backup",      "sonia.legacy", "Backup Team", "GenericAll")
+ace("L_sonia_gw_pki",         "sonia.legacy", "PKI Administrators", "GenericWrite")
+ace("L_sonia_fcp_sergio",     "sonia.legacy", "sergio.h", "Ext-User-Force-Change-Password")
+
 # --- BENIGN, NON-ESCALATING ACLs (roles with real permissions over objects,
 #     but every target is path-less, so they add NO route to Domain Admin) ---
 # Service Desk L1 can reset passwords of warehouse staff (operational only).
 ace("bg_servicedesk_fcp_warehouse", "Service Desk L1",
-    f"OU=Warehouse,{BASE}", "Ext-User-Force-Change-Password", "All")
+    ou_path("Warehouse"), "Ext-User-Force-Change-Password", "All")
 # "All Managers" owns/manages the "All Staff" distribution list (add/remove).
 ace("bg_managers_ga_allstaff", "All Managers", "All Staff", "GenericAll")
 # Department Heads can read (only) the Sales OU (reporting visibility).
-ace("bg_depthead_read_sales", "Department Heads", f"OU=Sales,{BASE}",
+ace("bg_depthead_read_sales", "Department Heads", ou_path("Sales"),
     "ReadProperty", "All")
 # HR Department can read staff objects in Marketing OU (benign HR visibility).
-ace("bg_hr_read_marketing", "HR Department", f"OU=Marketing,{BASE}",
+ace("bg_hr_read_marketing", "HR Department", ou_path("Marketing"),
     "ReadProperty", "All")
 
 # ---------------------------------------------------------------------------
@@ -481,7 +550,7 @@ config = {
                 "dc": "dc01", "domain_password": DOMAIN_PASSWORD,
                 "netbios_name": NETBIOS, "ca_server": "dc01",
                 "ca_web_enrollment": False, "trust": "",
-                "laps_path": f"OU=Servers,{BASE}",
+                "laps_path": ou_path("Servers"),
                 "organisation_units": organisation_units, "groups": groups,
                 "multi_domain_groups_member": [], "gmsa": gmsa,
                 "acls": acls, "users": users,

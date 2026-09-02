@@ -45,221 +45,239 @@
                 "ca_server": "dc01",
                 "ca_web_enrollment": false,
                 "trust": "",
-                "laps_path": "OU=Servers,DC=redil,DC=local",
+                "laps_path": "OU=Servers,OU=Admin,OU=REDIL,DC=redil,DC=local",
                 "organisation_units": {
-                    "Tier0": {
+                    "REDIL": {
                         "path": "DC=redil,DC=local"
                     },
-                    "IT": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Servers": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Management": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "HR": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Finance": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Sales": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Purchasing": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Production": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Maintenance": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Warehouse": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Quality": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "Marketing": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "ServiceAccounts": {
-                        "path": "DC=redil,DC=local"
+                    "Admin": {
+                        "path": "OU=REDIL,DC=redil,DC=local"
                     },
                     "Contractors": {
-                        "path": "DC=redil,DC=local"
+                        "path": "OU=REDIL,DC=redil,DC=local"
                     },
-                    "SharedAccounts": {
-                        "path": "DC=redil,DC=local"
-                    },
-                    "DisabledAccounts": {
-                        "path": "DC=redil,DC=local"
+                    "Disabled": {
+                        "path": "OU=REDIL,DC=redil,DC=local"
                     },
                     "Groups": {
-                        "path": "DC=redil,DC=local"
+                        "path": "OU=REDIL,DC=redil,DC=local"
+                    },
+                    "ServiceAccounts": {
+                        "path": "OU=REDIL,DC=redil,DC=local"
+                    },
+                    "SharedAccounts": {
+                        "path": "OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Users": {
+                        "path": "OU=REDIL,DC=redil,DC=local"
+                    },
+                    "IT": {
+                        "path": "OU=Admin,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Servers": {
+                        "path": "OU=Admin,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Tier0": {
+                        "path": "OU=Admin,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Distribution": {
+                        "path": "OU=Groups,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Security": {
+                        "path": "OU=Groups,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Finance": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "HR": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Maintenance": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Management": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Marketing": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Production": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Purchasing": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Quality": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Sales": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Warehouse": {
+                        "path": "OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "Administration": {
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     }
                 },
                 "groups": {
                     "universal": {},
                     "global": {
                         "Tier0 Admins": {
-                            "path": "OU=Tier0,DC=redil,DC=local"
+                            "path": "OU=Tier0,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "Server Administrators": {
-                            "path": "OU=IT,DC=redil,DC=local"
+                            "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "Database Administrators": {
-                            "path": "OU=IT,DC=redil,DC=local"
+                            "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "Backup Team": {
-                            "path": "OU=IT,DC=redil,DC=local"
+                            "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "PKI Administrators": {
-                            "path": "OU=IT,DC=redil,DC=local"
+                            "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "GPO Managers": {
-                            "path": "OU=IT,DC=redil,DC=local"
+                            "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "IT Support": {
-                            "path": "OU=IT,DC=redil,DC=local"
+                            "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "Helpdesk Operators": {
-                            "path": "OU=IT,DC=redil,DC=local"
+                            "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                         },
                         "OT SCADA Admins": {
-                            "path": "OU=Maintenance,DC=redil,DC=local"
+                            "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Management Board": {
-                            "path": "OU=Management,DC=redil,DC=local"
+                            "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "HR Department": {
-                            "path": "OU=HR,DC=redil,DC=local"
+                            "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "HR Payroll Admins": {
-                            "path": "OU=HR,DC=redil,DC=local"
+                            "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Finance Department": {
-                            "path": "OU=Finance,DC=redil,DC=local"
+                            "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Sales Department": {
-                            "path": "OU=Sales,DC=redil,DC=local"
+                            "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Purchasing Department": {
-                            "path": "OU=Purchasing,DC=redil,DC=local"
+                            "path": "OU=Purchasing,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Production Operators": {
-                            "path": "OU=Production,DC=redil,DC=local"
+                            "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Maintenance Engineers": {
-                            "path": "OU=Maintenance,DC=redil,DC=local"
+                            "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Warehouse Staff": {
-                            "path": "OU=Warehouse,DC=redil,DC=local"
+                            "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Quality Lab": {
-                            "path": "OU=Quality,DC=redil,DC=local"
+                            "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Marketing Team": {
-                            "path": "OU=Marketing,DC=redil,DC=local"
+                            "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                         },
                         "Service Accounts": {
-                            "path": "OU=ServiceAccounts,DC=redil,DC=local"
+                            "path": "OU=ServiceAccounts,OU=REDIL,DC=redil,DC=local"
                         },
                         "Production Line Workers": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Production Shift Leaders": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Logistics & Transport": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Quality Auditors": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Customer Service": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Sales Back Office": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Accounts Payable": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Accounts Receivable": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Maintenance Technicians": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Digital Marketing": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Service Desk L1": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "IT Interns": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Facilities & Cleaning": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Reception": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "R&D New Products": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "External Contractors": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "VPN Users": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Remote Access Users": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "WiFi Corporate": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "ERP Users": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "CAD Software Users": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Fileshare Finance RW": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Fileshare Finance RO": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Fileshare Production RW": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Fileshare Quality RW": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "SharePoint Contributors": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "SharePoint Readers": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Office Printer Admins": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Security,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "All Staff": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Distribution,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "All Managers": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Distribution,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         },
                         "Department Heads": {
-                            "path": "OU=Groups,DC=redil,DC=local"
+                            "path": "OU=Distribution,OU=Groups,OU=REDIL,DC=redil,DC=local"
                         }
                     },
                     "domainlocal": {}
@@ -386,9 +404,45 @@
                         "right": "Ext-User-Force-Change-Password",
                         "inheritance": "None"
                     },
+                    "X_raul_gw_gpo": {
+                        "for": "raul.b",
+                        "to": "GPO Managers",
+                        "right": "GenericWrite",
+                        "inheritance": "None"
+                    },
+                    "X_scada_ga_backup": {
+                        "for": "OT SCADA Admins",
+                        "to": "Backup Team",
+                        "right": "GenericAll",
+                        "inheritance": "None"
+                    },
+                    "X_pki_gw_gpo": {
+                        "for": "PKI Administrators",
+                        "to": "GPO Managers",
+                        "right": "GenericWrite",
+                        "inheritance": "None"
+                    },
+                    "L_sonia_ga_backup": {
+                        "for": "sonia.legacy",
+                        "to": "Backup Team",
+                        "right": "GenericAll",
+                        "inheritance": "None"
+                    },
+                    "L_sonia_gw_pki": {
+                        "for": "sonia.legacy",
+                        "to": "PKI Administrators",
+                        "right": "GenericWrite",
+                        "inheritance": "None"
+                    },
+                    "L_sonia_fcp_sergio": {
+                        "for": "sonia.legacy",
+                        "to": "sergio.h",
+                        "right": "Ext-User-Force-Change-Password",
+                        "inheritance": "None"
+                    },
                     "bg_servicedesk_fcp_warehouse": {
                         "for": "Service Desk L1",
-                        "to": "OU=Warehouse,DC=redil,DC=local",
+                        "to": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local",
                         "right": "Ext-User-Force-Change-Password",
                         "inheritance": "All"
                     },
@@ -400,13 +454,13 @@
                     },
                     "bg_depthead_read_sales": {
                         "for": "Department Heads",
-                        "to": "OU=Sales,DC=redil,DC=local",
+                        "to": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local",
                         "right": "ReadProperty",
                         "inheritance": "All"
                     },
                     "bg_hr_read_marketing": {
                         "for": "HR Department",
-                        "to": "OU=Marketing,DC=redil,DC=local",
+                        "to": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local",
                         "right": "ReadProperty",
                         "inheritance": "All"
                     }
@@ -429,7 +483,7 @@
                             "All Managers",
                             "Department Heads"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "admin.t0": {
                         "firstname": "Alberto",
@@ -447,7 +501,7 @@
                             "All Managers",
                             "Department Heads"
                         ],
-                        "path": "OU=Tier0,DC=redil,DC=local"
+                        "path": "OU=Tier0,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "lucia.g": {
                         "firstname": "Lucia",
@@ -463,7 +517,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "marta.b": {
                         "firstname": "Marta",
@@ -479,7 +533,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "juan.m": {
                         "firstname": "Juan",
@@ -495,7 +549,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "maria.v": {
                         "firstname": "Maria",
@@ -511,7 +565,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "antonio.a": {
                         "firstname": "Antonio",
@@ -527,7 +581,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "diego.m": {
                         "firstname": "Diego",
@@ -542,7 +596,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sergio.h": {
                         "firstname": "Sergio",
@@ -558,7 +612,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "carmen.f": {
                         "firstname": "Carmen",
@@ -573,7 +627,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "jose.s": {
                         "firstname": "Jose",
@@ -588,7 +642,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ana.h": {
                         "firstname": "Ana",
@@ -603,7 +657,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "manuel.v": {
                         "firstname": "Manuel",
@@ -618,7 +672,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=HR,DC=redil,DC=local"
+                        "path": "OU=HR,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "svc_erp": {
                         "firstname": "Service",
@@ -631,7 +685,7 @@
                             "Database Administrators",
                             "All Staff"
                         ],
-                        "path": "OU=ServiceAccounts,DC=redil,DC=local",
+                        "path": "OU=ServiceAccounts,OU=REDIL,DC=redil,DC=local",
                         "spns": [
                             "HTTP/erp.redil.local",
                             "HTTP/erp"
@@ -651,7 +705,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "francisco.i": {
                         "firstname": "Francisco",
@@ -667,7 +721,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "raul.b": {
                         "firstname": "Raul",
@@ -682,7 +736,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "isabel.g": {
                         "firstname": "Isabel",
@@ -698,7 +752,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "david.c": {
                         "firstname": "David",
@@ -714,7 +768,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "noelia.s": {
                         "firstname": "Noelia",
@@ -729,7 +783,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "emilio.c": {
                         "firstname": "Emilio",
@@ -744,7 +798,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sara.h": {
                         "firstname": "Sara",
@@ -759,7 +813,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "javier.c": {
                         "firstname": "Javier",
@@ -774,7 +828,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "elena.s": {
                         "firstname": "Elena",
@@ -789,7 +843,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "daniel.f": {
                         "firstname": "Daniel",
@@ -804,7 +858,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "rosa.l": {
                         "firstname": "Rosa",
@@ -819,7 +873,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sergio.m": {
                         "firstname": "Sergio",
@@ -834,7 +888,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "pablo.c": {
                         "firstname": "Pablo",
@@ -849,7 +903,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Purchasing,DC=redil,DC=local"
+                        "path": "OU=Purchasing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "marta.c": {
                         "firstname": "Marta",
@@ -864,7 +918,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Purchasing,DC=redil,DC=local"
+                        "path": "OU=Purchasing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "miguel.p": {
                         "firstname": "Miguel",
@@ -879,7 +933,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Purchasing,DC=redil,DC=local"
+                        "path": "OU=Purchasing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "cristina.r": {
                         "firstname": "Cristina",
@@ -894,7 +948,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Purchasing,DC=redil,DC=local"
+                        "path": "OU=Purchasing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "hugo.p": {
                         "firstname": "Hugo",
@@ -910,7 +964,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "angel.r": {
                         "firstname": "Angel",
@@ -926,7 +980,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "nuria.l": {
                         "firstname": "Nuria",
@@ -940,7 +994,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "pedro.n": {
                         "firstname": "Pedro",
@@ -954,7 +1008,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "beatriz.s": {
                         "firstname": "Beatriz",
@@ -968,7 +1022,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "luis.c": {
                         "firstname": "Luis",
@@ -982,7 +1036,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "patricia.p": {
                         "firstname": "Patricia",
@@ -996,7 +1050,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alberto.g": {
                         "firstname": "Alberto",
@@ -1010,7 +1064,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "silvia.b": {
                         "firstname": "Silvia",
@@ -1024,7 +1078,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ruben.l": {
                         "firstname": "Ruben",
@@ -1038,7 +1092,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "andrea.m": {
                         "firstname": "Andrea",
@@ -1052,7 +1106,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alvaro.s": {
                         "firstname": "Alvaro",
@@ -1066,7 +1120,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "raquel.n": {
                         "firstname": "Raquel",
@@ -1080,7 +1134,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "adrian.c": {
                         "firstname": "Adrian",
@@ -1094,7 +1148,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "natalia.r": {
                         "firstname": "Natalia",
@@ -1108,7 +1162,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ivan.v": {
                         "firstname": "Ivan",
@@ -1122,7 +1176,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "paula.m": {
                         "firstname": "Paula",
@@ -1136,7 +1190,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "victor.r": {
                         "firstname": "Victor",
@@ -1151,7 +1205,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alicia.g": {
                         "firstname": "Alicia",
@@ -1166,7 +1220,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "jorge.m": {
                         "firstname": "Jorge",
@@ -1181,7 +1235,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "irene.s": {
                         "firstname": "Irene",
@@ -1196,7 +1250,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ivan.o": {
                         "firstname": "Ivan",
@@ -1211,7 +1265,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "hector.b": {
                         "firstname": "Hector",
@@ -1227,7 +1281,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "lorena.m": {
                         "firstname": "Lorena",
@@ -1243,7 +1297,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "marcos.v": {
                         "firstname": "Marcos",
@@ -1259,7 +1313,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ramon.d": {
                         "firstname": "Ramon",
@@ -1275,7 +1329,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "teresa.c": {
                         "firstname": "Teresa",
@@ -1291,7 +1345,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "gonzalo.d": {
                         "firstname": "Gonzalo",
@@ -1307,7 +1361,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "monica.c": {
                         "firstname": "Monica",
@@ -1323,7 +1377,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "emilio.g": {
                         "firstname": "Emilio",
@@ -1339,7 +1393,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "backup.svc": {
                         "firstname": "Service",
@@ -1352,7 +1406,7 @@
                             "Backup Team",
                             "All Staff"
                         ],
-                        "path": "OU=ServiceAccounts,DC=redil,DC=local"
+                        "path": "OU=ServiceAccounts,OU=REDIL,DC=redil,DC=local"
                     },
                     "sonia.v": {
                         "firstname": "Sonia",
@@ -1368,7 +1422,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "svc_sql": {
                         "firstname": "Service",
@@ -1380,7 +1434,7 @@
                             "Service Accounts",
                             "All Staff"
                         ],
-                        "path": "OU=ServiceAccounts,DC=redil,DC=local",
+                        "path": "OU=ServiceAccounts,OU=REDIL,DC=redil,DC=local",
                         "spns": [
                             "MSSQLSvc/sql.redil.local:1433",
                             "MSSQLSvc/sql.redil.local"
@@ -1396,7 +1450,7 @@
                             "Service Accounts",
                             "All Staff"
                         ],
-                        "path": "OU=ServiceAccounts,DC=redil,DC=local",
+                        "path": "OU=ServiceAccounts,OU=REDIL,DC=redil,DC=local",
                         "spns": [
                             "HTTP/pedidos.redil.local"
                         ]
@@ -1412,7 +1466,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "vega.i": {
                         "firstname": "Vega",
@@ -1425,7 +1479,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "juan.mo": {
                         "firstname": "Juan",
@@ -1438,7 +1492,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "maria.ve": {
                         "firstname": "Maria",
@@ -1451,7 +1505,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "antonio.ag": {
                         "firstname": "Antonio",
@@ -1464,7 +1518,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "carmen.fe": {
                         "firstname": "Carmen",
@@ -1477,7 +1531,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "jose.su": {
                         "firstname": "Jose",
@@ -1490,7 +1544,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ana.he": {
                         "firstname": "Ana",
@@ -1503,7 +1557,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "manuel.vi": {
                         "firstname": "Manuel",
@@ -1517,7 +1571,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "laura.pa": {
                         "firstname": "Laura",
@@ -1531,7 +1585,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "francisco.ig": {
                         "firstname": "Francisco",
@@ -1545,7 +1599,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "isabel.gu": {
                         "firstname": "Isabel",
@@ -1559,7 +1613,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "david.ca": {
                         "firstname": "David",
@@ -1573,7 +1627,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sara.hi": {
                         "firstname": "Sara",
@@ -1588,7 +1642,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
+                        "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "javier.co": {
                         "firstname": "Javier",
@@ -1603,7 +1657,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
+                        "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "elena.so": {
                         "firstname": "Elena",
@@ -1618,7 +1672,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
+                        "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "daniel.fr": {
                         "firstname": "Daniel",
@@ -1633,7 +1687,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
+                        "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "rosa.lo": {
                         "firstname": "Rosa",
@@ -1648,7 +1702,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sergio.ma": {
                         "firstname": "Sergio",
@@ -1663,7 +1717,46 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "raquel.dsi": {
+                        "firstname": "Raquel",
+                        "surname": "Dominguez",
+                        "password": "Rd0m1nguez!Dsi",
+                        "city": "Villalon de Campos",
+                        "description": "Administradora de sistemas senior (permisos acumulados desde 2015)",
+                        "groups": [
+                            "Database Administrators",
+                            "Backup Team",
+                            "GPO Managers",
+                            "All Staff"
+                        ],
+                        "path": "OU=Administration,OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "nacho.dsi": {
+                        "firstname": "Ignacio",
+                        "surname": "Duran",
+                        "password": "N4cho_Infra#21",
+                        "city": "Villalon de Campos",
+                        "description": "Administrador de infraestructura y PKI",
+                        "groups": [
+                            "Server Administrators",
+                            "PKI Administrators",
+                            "All Staff"
+                        ],
+                        "path": "OU=Administration,OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
+                    },
+                    "sonia.legacy": {
+                        "firstname": "Sonia",
+                        "surname": "Vela",
+                        "password": "S0nia-L3gacy",
+                        "city": "Villalon de Campos",
+                        "description": "Cuenta tecnica heredada (ACLs directas acumuladas)",
+                        "groups": [
+                            "IT Support",
+                            "All Staff"
+                        ],
+                        "path": "OU=Administration,OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "marta.cr": {
                         "firstname": "Marta",
@@ -1677,7 +1770,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "miguel.pr": {
                         "firstname": "Miguel",
@@ -1691,7 +1784,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "cristina.ra": {
                         "firstname": "Cristina",
@@ -1705,7 +1798,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "angel.re": {
                         "firstname": "Angel",
@@ -1719,7 +1812,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "nuria.lo": {
                         "firstname": "Nuria",
@@ -1733,7 +1826,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "pedro.na": {
                         "firstname": "Pedro",
@@ -1747,7 +1840,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "beatriz.se": {
                         "firstname": "Beatriz",
@@ -1761,7 +1854,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "luis.ca": {
                         "firstname": "Luis",
@@ -1775,7 +1868,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "patricia.pa": {
                         "firstname": "Patricia",
@@ -1789,7 +1882,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alberto.gi": {
                         "firstname": "Alberto",
@@ -1803,7 +1896,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "silvia.bl": {
                         "firstname": "Silvia",
@@ -1817,7 +1910,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ruben.le": {
                         "firstname": "Ruben",
@@ -1831,7 +1924,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "andrea.mo": {
                         "firstname": "Andrea",
@@ -1845,7 +1938,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alvaro.sa": {
                         "firstname": "Alvaro",
@@ -1859,7 +1952,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "raquel.nu": {
                         "firstname": "Raquel",
@@ -1873,7 +1966,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "adrian.ca": {
                         "firstname": "Adrian",
@@ -1887,7 +1980,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "natalia.ro": {
                         "firstname": "Natalia",
@@ -1901,7 +1994,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ivan.vi": {
                         "firstname": "Ivan",
@@ -1915,7 +2008,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "paula.me": {
                         "firstname": "Paula",
@@ -1929,7 +2022,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "victor.ru": {
                         "firstname": "Victor",
@@ -1943,7 +2036,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alicia.ga": {
                         "firstname": "Alicia",
@@ -1957,7 +2050,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "jorge.me": {
                         "firstname": "Jorge",
@@ -1971,7 +2064,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "irene.sa": {
                         "firstname": "Irene",
@@ -1985,7 +2078,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "hector.br": {
                         "firstname": "Hector",
@@ -1999,7 +2092,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "lorena.mo": {
                         "firstname": "Lorena",
@@ -2013,7 +2106,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ramon.di": {
                         "firstname": "Ramon",
@@ -2027,7 +2120,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "teresa.ca": {
                         "firstname": "Teresa",
@@ -2041,7 +2134,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "gonzalo.du": {
                         "firstname": "Gonzalo",
@@ -2055,7 +2148,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "monica.ca": {
                         "firstname": "Monica",
@@ -2069,7 +2162,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "emilio.gi": {
                         "firstname": "Emilio",
@@ -2083,7 +2176,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sonia.va": {
                         "firstname": "Sonia",
@@ -2097,7 +2190,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ismael.ro": {
                         "firstname": "Ismael",
@@ -2111,7 +2204,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "vega.ib": {
                         "firstname": "Vega",
@@ -2125,7 +2218,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "juan.m2": {
                         "firstname": "Juan",
@@ -2139,7 +2232,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "maria.v2": {
                         "firstname": "Maria",
@@ -2153,7 +2246,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "antonio.a2": {
                         "firstname": "Antonio",
@@ -2167,7 +2260,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "carmen.f2": {
                         "firstname": "Carmen",
@@ -2181,7 +2274,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "jose.s2": {
                         "firstname": "Jose",
@@ -2195,7 +2288,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ana.h2": {
                         "firstname": "Ana",
@@ -2209,7 +2302,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "manuel.v2": {
                         "firstname": "Manuel",
@@ -2223,7 +2316,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "laura.p2": {
                         "firstname": "Laura",
@@ -2237,7 +2330,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "francisco.i2": {
                         "firstname": "Francisco",
@@ -2251,7 +2344,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "isabel.g2": {
                         "firstname": "Isabel",
@@ -2265,7 +2358,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "david.c2": {
                         "firstname": "David",
@@ -2279,7 +2372,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sara.h2": {
                         "firstname": "Sara",
@@ -2293,7 +2386,7 @@
                             "WiFi Corporate",
                             "Fileshare Production RW"
                         ],
-                        "path": "OU=Production,DC=redil,DC=local"
+                        "path": "OU=Production,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "javier.c2": {
                         "firstname": "Javier",
@@ -2306,7 +2399,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "elena.s2": {
                         "firstname": "Elena",
@@ -2319,7 +2412,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "daniel.f2": {
                         "firstname": "Daniel",
@@ -2332,7 +2425,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "rosa.l2": {
                         "firstname": "Rosa",
@@ -2345,7 +2438,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sergio.m2": {
                         "firstname": "Sergio",
@@ -2358,7 +2451,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "marta.c2": {
                         "firstname": "Marta",
@@ -2371,7 +2464,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "miguel.p2": {
                         "firstname": "Miguel",
@@ -2384,7 +2477,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "cristina.r2": {
                         "firstname": "Cristina",
@@ -2397,7 +2490,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "angel.r2": {
                         "firstname": "Angel",
@@ -2410,7 +2503,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "nuria.l2": {
                         "firstname": "Nuria",
@@ -2423,7 +2516,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "pedro.n2": {
                         "firstname": "Pedro",
@@ -2436,7 +2529,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "beatriz.s2": {
                         "firstname": "Beatriz",
@@ -2449,7 +2542,7 @@
                             "All Staff",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
+                        "path": "OU=Warehouse,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "luis.c2": {
                         "firstname": "Luis",
@@ -2463,7 +2556,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "patricia.p2": {
                         "firstname": "Patricia",
@@ -2477,7 +2570,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alberto.g2": {
                         "firstname": "Alberto",
@@ -2491,7 +2584,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "silvia.b2": {
                         "firstname": "Silvia",
@@ -2505,7 +2598,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ruben.l2": {
                         "firstname": "Ruben",
@@ -2519,7 +2612,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "andrea.m2": {
                         "firstname": "Andrea",
@@ -2534,7 +2627,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alvaro.s2": {
                         "firstname": "Alvaro",
@@ -2549,7 +2642,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "raquel.n2": {
                         "firstname": "Raquel",
@@ -2564,7 +2657,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "adrian.c2": {
                         "firstname": "Adrian",
@@ -2579,7 +2672,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "natalia.r2": {
                         "firstname": "Natalia",
@@ -2594,7 +2687,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ivan.v2": {
                         "firstname": "Ivan",
@@ -2609,7 +2702,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "paula.m2": {
                         "firstname": "Paula",
@@ -2624,7 +2717,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "victor.r2": {
                         "firstname": "Victor",
@@ -2639,7 +2732,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alicia.g2": {
                         "firstname": "Alicia",
@@ -2654,7 +2747,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "jorge.m2": {
                         "firstname": "Jorge",
@@ -2669,7 +2762,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "irene.s2": {
                         "firstname": "Irene",
@@ -2684,7 +2777,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "hector.b2": {
                         "firstname": "Hector",
@@ -2699,7 +2792,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "lorena.m2": {
                         "firstname": "Lorena",
@@ -2714,7 +2807,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ramon.d2": {
                         "firstname": "Ramon",
@@ -2729,7 +2822,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Sales,DC=redil,DC=local"
+                        "path": "OU=Sales,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "teresa.c2": {
                         "firstname": "Teresa",
@@ -2745,7 +2838,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "gonzalo.d2": {
                         "firstname": "Gonzalo",
@@ -2761,7 +2854,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "monica.c2": {
                         "firstname": "Monica",
@@ -2777,7 +2870,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "emilio.g2": {
                         "firstname": "Emilio",
@@ -2793,7 +2886,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sonia.v2": {
                         "firstname": "Sonia",
@@ -2809,7 +2902,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ismael.r2": {
                         "firstname": "Ismael",
@@ -2825,7 +2918,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "vega.i2": {
                         "firstname": "Vega",
@@ -2841,7 +2934,7 @@
                             "WiFi Corporate",
                             "Fileshare Finance RW"
                         ],
-                        "path": "OU=Finance,DC=redil,DC=local"
+                        "path": "OU=Finance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "juan.m3": {
                         "firstname": "Juan",
@@ -2856,7 +2949,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "maria.v3": {
                         "firstname": "Maria",
@@ -2871,7 +2964,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "antonio.a3": {
                         "firstname": "Antonio",
@@ -2886,7 +2979,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "carmen.f3": {
                         "firstname": "Carmen",
@@ -2901,7 +2994,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "jose.s3": {
                         "firstname": "Jose",
@@ -2916,7 +3009,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "ana.h3": {
                         "firstname": "Ana",
@@ -2931,7 +3024,7 @@
                             "Fileshare Production RW",
                             "CAD Software Users"
                         ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
+                        "path": "OU=Maintenance,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "manuel.v3": {
                         "firstname": "Manuel",
@@ -2946,7 +3039,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
+                        "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "laura.p3": {
                         "firstname": "Laura",
@@ -2961,7 +3054,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
+                        "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "francisco.i3": {
                         "firstname": "Francisco",
@@ -2976,7 +3069,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
+                        "path": "OU=Marketing,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "isabel.g3": {
                         "firstname": "Isabel",
@@ -2991,7 +3084,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "david.c3": {
                         "firstname": "David",
@@ -3006,7 +3099,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "sara.h3": {
                         "firstname": "Sara",
@@ -3021,7 +3114,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "javier.c3": {
                         "firstname": "Javier",
@@ -3036,7 +3129,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "elena.s3": {
                         "firstname": "Elena",
@@ -3051,7 +3144,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "daniel.f3": {
                         "firstname": "Daniel",
@@ -3066,7 +3159,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=IT,OU=Admin,OU=REDIL,DC=redil,DC=local"
                     },
                     "rosa.l3": {
                         "firstname": "Rosa",
@@ -3081,7 +3174,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "sergio.m3": {
                         "firstname": "Sergio",
@@ -3096,7 +3189,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "marta.c3": {
                         "firstname": "Marta",
@@ -3111,7 +3204,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "miguel.p3": {
                         "firstname": "Miguel",
@@ -3126,7 +3219,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "cristina.r3": {
                         "firstname": "Cristina",
@@ -3141,7 +3234,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "angel.r3": {
                         "firstname": "Angel",
@@ -3156,7 +3249,7 @@
                             "VPN Users",
                             "WiFi Corporate"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Management,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "nuria.l3": {
                         "firstname": "Nuria",
@@ -3170,7 +3263,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "pedro.n3": {
                         "firstname": "Pedro",
@@ -3184,7 +3277,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "beatriz.s3": {
                         "firstname": "Beatriz",
@@ -3198,7 +3291,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "luis.c3": {
                         "firstname": "Luis",
@@ -3212,7 +3305,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "patricia.p3": {
                         "firstname": "Patricia",
@@ -3226,7 +3319,7 @@
                             "WiFi Corporate",
                             "Fileshare Quality RW"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Quality,OU=Users,OU=REDIL,DC=redil,DC=local"
                     },
                     "alberto.g3": {
                         "firstname": "Alberto",
@@ -3238,7 +3331,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "silvia.b3": {
                         "firstname": "Silvia",
@@ -3250,7 +3343,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "ruben.l3": {
                         "firstname": "Ruben",
@@ -3262,7 +3355,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "andrea.m3": {
                         "firstname": "Andrea",
@@ -3274,7 +3367,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "alvaro.s3": {
                         "firstname": "Alvaro",
@@ -3286,7 +3379,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "raquel.n3": {
                         "firstname": "Raquel",
@@ -3298,7 +3391,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "adrian.c3": {
                         "firstname": "Adrian",
@@ -3310,7 +3403,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "natalia.r3": {
                         "firstname": "Natalia",
@@ -3322,7 +3415,7 @@
                             "External Contractors",
                             "All Staff"
                         ],
-                        "path": "OU=Contractors,DC=redil,DC=local"
+                        "path": "OU=Contractors,OU=REDIL,DC=redil,DC=local"
                     },
                     "svc_scanner": {
                         "firstname": "Scanner",
@@ -3334,7 +3427,7 @@
                             "Service Accounts",
                             "All Staff"
                         ],
-                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                        "path": "OU=SharedAccounts,OU=REDIL,DC=redil,DC=local"
                     },
                     "shared.info": {
                         "firstname": "Buzon",
@@ -3345,7 +3438,7 @@
                         "groups": [
                             "All Staff"
                         ],
-                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                        "path": "OU=SharedAccounts,OU=REDIL,DC=redil,DC=local"
                     },
                     "shared.pedidos": {
                         "firstname": "Buzon",
@@ -3356,7 +3449,7 @@
                         "groups": [
                             "All Staff"
                         ],
-                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                        "path": "OU=SharedAccounts,OU=REDIL,DC=redil,DC=local"
                     },
                     "reception.pc": {
                         "firstname": "PC",
@@ -3368,7 +3461,7 @@
                             "Reception",
                             "All Staff"
                         ],
-                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                        "path": "OU=SharedAccounts,OU=REDIL,DC=redil,DC=local"
                     },
                     "ivan.v3": {
                         "firstname": "Ivan",
@@ -3377,7 +3470,7 @@
                         "city": "Villalon de Campos",
                         "description": "Baja - empleado que ya no trabaja aqui",
                         "groups": [],
-                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                        "path": "OU=Disabled,OU=REDIL,DC=redil,DC=local"
                     },
                     "paula.m3": {
                         "firstname": "Paula",
@@ -3386,7 +3479,7 @@
                         "city": "Villalon de Campos",
                         "description": "Baja - empleado que ya no trabaja aqui",
                         "groups": [],
-                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                        "path": "OU=Disabled,OU=REDIL,DC=redil,DC=local"
                     },
                     "victor.r3": {
                         "firstname": "Victor",
@@ -3395,7 +3488,7 @@
                         "city": "Villalon de Campos",
                         "description": "Baja - empleado que ya no trabaja aqui",
                         "groups": [],
-                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                        "path": "OU=Disabled,OU=REDIL,DC=redil,DC=local"
                     },
                     "alicia.g3": {
                         "firstname": "Alicia",
@@ -3404,7 +3497,7 @@
                         "city": "Villalon de Campos",
                         "description": "Baja - empleado que ya no trabaja aqui",
                         "groups": [],
-                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                        "path": "OU=Disabled,OU=REDIL,DC=redil,DC=local"
                     },
                     "jorge.m3": {
                         "firstname": "Jorge",
@@ -3413,7 +3506,7 @@
                         "city": "Villalon de Campos",
                         "description": "Baja - empleado que ya no trabaja aqui",
                         "groups": [],
-                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                        "path": "OU=Disabled,OU=REDIL,DC=redil,DC=local"
                     }
                 }
             }
