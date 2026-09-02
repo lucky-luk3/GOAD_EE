@@ -1,4 +1,4 @@
-# REDIL lab - set account-level misconfiguration flags
+# REDIL lab - set account-level misconfiguration flags + disable leavers
 # Runs on the DC (redil.local). Idempotent.
 Import-Module ActiveDirectory
 
@@ -20,3 +20,10 @@ foreach ($u in $pwdnotreq) {
         Write-Host "[+] passwordnotreqd set on $u"
     } catch { Write-Host "[-] $u not found: $_" }
 }
+
+# --- Disable leaver accounts (people who no longer work here) -----------------
+# These live in OU=DisabledAccounts; disabling them reflects real AD hygiene.
+try {
+    Get-ADUser -Filter * -SearchBase "OU=DisabledAccounts,DC=redil,DC=local" |
+        ForEach-Object { Disable-ADAccount -Identity $_; Write-Host "[+] disabled leaver $($_.SamAccountName)" }
+} catch { Write-Host "[-] Could not disable leaver accounts: $_" }

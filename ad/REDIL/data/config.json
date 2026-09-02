@@ -68,6 +68,18 @@
                     },
                     "ServiceAccounts": {
                         "path": "DC=redil,DC=local"
+                    },
+                    "Contractors": {
+                        "path": "DC=redil,DC=local"
+                    },
+                    "SharedAccounts": {
+                        "path": "DC=redil,DC=local"
+                    },
+                    "DisabledAccounts": {
+                        "path": "DC=redil,DC=local"
+                    },
+                    "Groups": {
+                        "path": "DC=redil,DC=local"
                     }
                 },
                 "groups": {
@@ -135,6 +147,99 @@
                         },
                         "Service Accounts": {
                             "path": "OU=ServiceAccounts,DC=redil,DC=local"
+                        },
+                        "Production Line Workers": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Production Shift Leaders": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Logistics & Transport": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Quality Auditors": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Customer Service": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Sales Back Office": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Accounts Payable": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Accounts Receivable": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Maintenance Technicians": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Digital Marketing": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Service Desk L1": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "IT Interns": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Facilities & Cleaning": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Reception": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "R&D New Products": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "External Contractors": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "VPN Users": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Remote Access Users": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "WiFi Corporate": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "ERP Users": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "CAD Software Users": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Fileshare Finance RW": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Fileshare Finance RO": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Fileshare Production RW": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Fileshare Quality RW": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "SharePoint Contributors": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "SharePoint Readers": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Office Printer Admins": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "All Staff": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "All Managers": {
+                            "path": "OU=Groups,DC=redil,DC=local"
+                        },
+                        "Department Heads": {
+                            "path": "OU=Groups,DC=redil,DC=local"
                         }
                     },
                     "domainlocal": {}
@@ -242,6 +347,30 @@
                         "to": "backup.svc",
                         "right": "Ext-User-Force-Change-Password",
                         "inheritance": "None"
+                    },
+                    "bg_servicedesk_fcp_warehouse": {
+                        "for": "Service Desk L1",
+                        "to": "OU=Warehouse,DC=redil,DC=local",
+                        "right": "Ext-User-Force-Change-Password",
+                        "inheritance": "All"
+                    },
+                    "bg_managers_ga_allstaff": {
+                        "for": "All Managers",
+                        "to": "All Staff",
+                        "right": "GenericAll",
+                        "inheritance": "None"
+                    },
+                    "bg_depthead_read_sales": {
+                        "for": "Department Heads",
+                        "to": "OU=Sales,DC=redil,DC=local",
+                        "right": "ReadProperty",
+                        "inheritance": "All"
+                    },
+                    "bg_hr_read_marketing": {
+                        "for": "HR Department",
+                        "to": "OU=Marketing,DC=redil,DC=local",
+                        "right": "ReadProperty",
+                        "inheritance": "All"
                     }
                 },
                 "users": {
@@ -254,7 +383,13 @@
                         "groups": [
                             "Management Board",
                             "Tier0 Admins",
-                            "Domain Admins"
+                            "Domain Admins",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "All Managers",
+                            "Department Heads"
                         ],
                         "path": "OU=Management,DC=redil,DC=local"
                     },
@@ -266,7 +401,13 @@
                         "description": "Administrador de dominio (IT)",
                         "groups": [
                             "Tier0 Admins",
-                            "Domain Admins"
+                            "Domain Admins",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "All Managers",
+                            "Department Heads"
                         ],
                         "path": "OU=Tier0,DC=redil,DC=local"
                     },
@@ -278,7 +419,11 @@
                         "description": "Responsable de nominas (AS-REP roastable)",
                         "groups": [
                             "HR Department",
-                            "HR Payroll Admins"
+                            "HR Payroll Admins",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -290,7 +435,11 @@
                         "description": "Tecnico de nominas (AS-REP roastable)",
                         "groups": [
                             "HR Department",
-                            "HR Payroll Admins"
+                            "HR Payroll Admins",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -302,7 +451,11 @@
                         "description": "Tecnico de nominas",
                         "groups": [
                             "HR Department",
-                            "HR Payroll Admins"
+                            "HR Payroll Admins",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -314,7 +467,11 @@
                         "description": "Tecnico de nominas",
                         "groups": [
                             "HR Department",
-                            "HR Payroll Admins"
+                            "HR Payroll Admins",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -326,7 +483,11 @@
                         "description": "Tecnico de nominas",
                         "groups": [
                             "HR Department",
-                            "HR Payroll Admins"
+                            "HR Payroll Admins",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -337,7 +498,11 @@
                         "city": "Villalon de Campos",
                         "description": "Auxiliar de RRHH",
                         "groups": [
-                            "HR Department"
+                            "HR Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -349,7 +514,11 @@
                         "description": "Administrador de soporte (helpdesk)",
                         "groups": [
                             "IT Support",
-                            "Helpdesk Operators"
+                            "Helpdesk Operators",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -360,7 +529,11 @@
                         "city": "Villalon de Campos",
                         "description": "HR Department - empleado",
                         "groups": [
-                            "HR Department"
+                            "HR Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -371,7 +544,11 @@
                         "city": "Villalon de Campos",
                         "description": "HR Department - empleado",
                         "groups": [
-                            "HR Department"
+                            "HR Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -382,7 +559,11 @@
                         "city": "Villalon de Campos",
                         "description": "HR Department - empleado",
                         "groups": [
-                            "HR Department"
+                            "HR Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -393,7 +574,11 @@
                         "city": "Villalon de Campos",
                         "description": "HR Department - empleado",
                         "groups": [
-                            "HR Department"
+                            "HR Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=HR,DC=redil,DC=local"
                     },
@@ -405,7 +590,8 @@
                         "description": "Cuenta de servicio del ERP (SAP legacy)",
                         "groups": [
                             "Service Accounts",
-                            "Database Administrators"
+                            "Database Administrators",
+                            "All Staff"
                         ],
                         "path": "OU=ServiceAccounts,DC=redil,DC=local",
                         "spns": [
@@ -421,7 +607,11 @@
                         "description": "Administrador de bases de datos",
                         "groups": [
                             "IT Support",
-                            "Database Administrators"
+                            "Database Administrators",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -433,7 +623,11 @@
                         "description": "Administrador de bases de datos",
                         "groups": [
                             "IT Support",
-                            "Database Administrators"
+                            "Database Administrators",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -444,7 +638,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de sistemas (junior)",
                         "groups": [
-                            "IT Support"
+                            "IT Support",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -456,7 +654,11 @@
                         "description": "Administrador de servidores",
                         "groups": [
                             "IT Support",
-                            "Server Administrators"
+                            "Server Administrators",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -468,7 +670,11 @@
                         "description": "Administrador de servidores",
                         "groups": [
                             "IT Support",
-                            "Server Administrators"
+                            "Server Administrators",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -479,7 +685,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial de zona norte (AS-REP roastable)",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -490,7 +700,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial de exportacion (AS-REP roastable)",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -501,7 +715,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -512,7 +730,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -523,7 +745,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -534,7 +760,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -545,7 +775,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -556,7 +790,11 @@
                         "city": "Villalon de Campos",
                         "description": "Comercial",
                         "groups": [
-                            "Sales Department"
+                            "Sales Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Sales,DC=redil,DC=local"
                     },
@@ -567,7 +805,11 @@
                         "city": "Villalon de Campos",
                         "description": "Responsable de compras",
                         "groups": [
-                            "Purchasing Department"
+                            "Purchasing Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Purchasing,DC=redil,DC=local"
                     },
@@ -578,7 +820,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de compras",
                         "groups": [
-                            "Purchasing Department"
+                            "Purchasing Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Purchasing,DC=redil,DC=local"
                     },
@@ -589,7 +835,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de compras",
                         "groups": [
-                            "Purchasing Department"
+                            "Purchasing Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Purchasing,DC=redil,DC=local"
                     },
@@ -600,7 +850,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de compras",
                         "groups": [
-                            "Purchasing Department"
+                            "Purchasing Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Purchasing,DC=redil,DC=local"
                     },
@@ -612,7 +866,11 @@
                         "description": "Administrador de la PKI interna",
                         "groups": [
                             "IT Support",
-                            "PKI Administrators"
+                            "PKI Administrators",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -624,7 +882,11 @@
                         "description": "Administrador de la PKI interna",
                         "groups": [
                             "IT Support",
-                            "PKI Administrators"
+                            "PKI Administrators",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -635,7 +897,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -646,7 +911,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -657,7 +925,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -668,7 +939,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -679,7 +953,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -690,7 +967,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -701,7 +981,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -712,7 +995,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -723,7 +1009,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -734,7 +1023,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -745,7 +1037,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -756,7 +1051,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -767,7 +1065,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -778,7 +1079,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -789,7 +1093,10 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de produccion (linea de curado)",
                         "groups": [
-                            "Production Operators"
+                            "Production Operators",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
                     },
@@ -800,7 +1107,11 @@
                         "city": "Villalon de Campos",
                         "description": "Ingeniero de mantenimiento industrial",
                         "groups": [
-                            "Maintenance Engineers"
+                            "Maintenance Engineers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
                         ],
                         "path": "OU=Maintenance,DC=redil,DC=local"
                     },
@@ -811,7 +1122,11 @@
                         "city": "Villalon de Campos",
                         "description": "Ingeniero de mantenimiento industrial",
                         "groups": [
-                            "Maintenance Engineers"
+                            "Maintenance Engineers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
                         ],
                         "path": "OU=Maintenance,DC=redil,DC=local"
                     },
@@ -822,7 +1137,11 @@
                         "city": "Villalon de Campos",
                         "description": "Ingeniero de mantenimiento industrial",
                         "groups": [
-                            "Maintenance Engineers"
+                            "Maintenance Engineers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
                         ],
                         "path": "OU=Maintenance,DC=redil,DC=local"
                     },
@@ -833,7 +1152,11 @@
                         "city": "Villalon de Campos",
                         "description": "Ingeniero de mantenimiento industrial",
                         "groups": [
-                            "Maintenance Engineers"
+                            "Maintenance Engineers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
                         ],
                         "path": "OU=Maintenance,DC=redil,DC=local"
                     },
@@ -844,7 +1167,11 @@
                         "city": "Villalon de Campos",
                         "description": "Ingeniero SCADA / OT (cuenta privilegiada)",
                         "groups": [
-                            "OT SCADA Admins"
+                            "OT SCADA Admins",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
                         ],
                         "path": "OU=Maintenance,DC=redil,DC=local"
                     },
@@ -856,7 +1183,11 @@
                         "description": "Gestor de politicas de grupo (GPO)",
                         "groups": [
                             "GPO Managers",
-                            "IT Support"
+                            "IT Support",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -868,7 +1199,11 @@
                         "description": "Gestor de politicas de grupo (GPO)",
                         "groups": [
                             "GPO Managers",
-                            "IT Support"
+                            "IT Support",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -879,7 +1214,12 @@
                         "city": "Villalon de Campos",
                         "description": "Contable senior (cuenta antigua, sin preautenticacion)",
                         "groups": [
-                            "Finance Department"
+                            "Finance Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
                         ],
                         "path": "OU=Finance,DC=redil,DC=local"
                     },
@@ -890,7 +1230,12 @@
                         "city": "Villalon de Campos",
                         "description": "Contable",
                         "groups": [
-                            "Finance Department"
+                            "Finance Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
                         ],
                         "path": "OU=Finance,DC=redil,DC=local"
                     },
@@ -901,7 +1246,12 @@
                         "city": "Villalon de Campos",
                         "description": "Contable",
                         "groups": [
-                            "Finance Department"
+                            "Finance Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
                         ],
                         "path": "OU=Finance,DC=redil,DC=local"
                     },
@@ -912,7 +1262,12 @@
                         "city": "Villalon de Campos",
                         "description": "Contable",
                         "groups": [
-                            "Finance Department"
+                            "Finance Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
                         ],
                         "path": "OU=Finance,DC=redil,DC=local"
                     },
@@ -923,7 +1278,12 @@
                         "city": "Villalon de Campos",
                         "description": "Contable",
                         "groups": [
-                            "Finance Department"
+                            "Finance Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
                         ],
                         "path": "OU=Finance,DC=redil,DC=local"
                     },
@@ -934,7 +1294,12 @@
                         "city": "Villalon de Campos",
                         "description": "Contable",
                         "groups": [
-                            "Finance Department"
+                            "Finance Department",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
                         ],
                         "path": "OU=Finance,DC=redil,DC=local"
                     },
@@ -946,7 +1311,8 @@
                         "description": "Cuenta de servicio de copias (Veeam) - miembro de Backup Team",
                         "groups": [
                             "Service Accounts",
-                            "Backup Team"
+                            "Backup Team",
+                            "All Staff"
                         ],
                         "path": "OU=ServiceAccounts,DC=redil,DC=local"
                     },
@@ -958,7 +1324,11 @@
                         "description": "Operador de copias de seguridad",
                         "groups": [
                             "IT Support",
-                            "Backup Team"
+                            "Backup Team",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
@@ -969,7 +1339,8 @@
                         "city": "Villalon de Campos",
                         "description": "Cuenta de servicio MSSQL (reporting)",
                         "groups": [
-                            "Service Accounts"
+                            "Service Accounts",
+                            "All Staff"
                         ],
                         "path": "OU=ServiceAccounts,DC=redil,DC=local",
                         "spns": [
@@ -984,7 +1355,8 @@
                         "city": "Villalon de Campos",
                         "description": "Cuenta de servicio del portal de pedidos",
                         "groups": [
-                            "Service Accounts"
+                            "Service Accounts",
+                            "All Staff"
                         ],
                         "path": "OU=ServiceAccounts,DC=redil,DC=local",
                         "spns": [
@@ -998,7 +1370,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1009,7 +1383,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1020,7 +1396,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1031,7 +1409,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1042,7 +1422,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1053,7 +1435,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1064,7 +1448,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1075,7 +1461,9 @@
                         "city": "Villalon de Campos",
                         "description": "Operario de almacen",
                         "groups": [
-                            "Warehouse Staff"
+                            "Warehouse Staff",
+                            "All Staff",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Warehouse,DC=redil,DC=local"
                     },
@@ -1086,7 +1474,10 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de laboratorio/calidad",
                         "groups": [
-                            "Quality Lab"
+                            "Quality Lab",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
                         ],
                         "path": "OU=Quality,DC=redil,DC=local"
                     },
@@ -1097,7 +1488,10 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de laboratorio/calidad",
                         "groups": [
-                            "Quality Lab"
+                            "Quality Lab",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
                         ],
                         "path": "OU=Quality,DC=redil,DC=local"
                     },
@@ -1108,7 +1502,10 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de laboratorio/calidad",
                         "groups": [
-                            "Quality Lab"
+                            "Quality Lab",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
                         ],
                         "path": "OU=Quality,DC=redil,DC=local"
                     },
@@ -1119,7 +1516,10 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de laboratorio/calidad",
                         "groups": [
-                            "Quality Lab"
+                            "Quality Lab",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
                         ],
                         "path": "OU=Quality,DC=redil,DC=local"
                     },
@@ -1130,7 +1530,10 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de laboratorio/calidad",
                         "groups": [
-                            "Quality Lab"
+                            "Quality Lab",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
                         ],
                         "path": "OU=Quality,DC=redil,DC=local"
                     },
@@ -1141,7 +1544,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de marketing",
                         "groups": [
-                            "Marketing Team"
+                            "Marketing Team",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Marketing,DC=redil,DC=local"
                     },
@@ -1152,7 +1559,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de marketing",
                         "groups": [
-                            "Marketing Team"
+                            "Marketing Team",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Marketing,DC=redil,DC=local"
                     },
@@ -1163,7 +1574,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de marketing",
                         "groups": [
-                            "Marketing Team"
+                            "Marketing Team",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Marketing,DC=redil,DC=local"
                     },
@@ -1174,7 +1589,11 @@
                         "city": "Villalon de Campos",
                         "description": "Tecnico de marketing",
                         "groups": [
-                            "Marketing Team"
+                            "Marketing Team",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Marketing,DC=redil,DC=local"
                     },
@@ -1185,7 +1604,11 @@
                         "city": "Villalon de Campos",
                         "description": "Direccion",
                         "groups": [
-                            "Management Board"
+                            "Management Board",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Management,DC=redil,DC=local"
                     },
@@ -1196,9 +1619,1763 @@
                         "city": "Villalon de Campos",
                         "description": "Direccion",
                         "groups": [
-                            "Management Board"
+                            "Management Board",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
                         ],
                         "path": "OU=Management,DC=redil,DC=local"
+                    },
+                    "marta.cr": {
+                        "firstname": "Marta",
+                        "surname": "Crespo",
+                        "password": "MartaCrespo2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "miguel.pr": {
+                        "firstname": "Miguel",
+                        "surname": "Prieto",
+                        "password": "MiguelPrieto2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "cristina.ra": {
+                        "firstname": "Cristina",
+                        "surname": "Ramos",
+                        "password": "CristinaRamos2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "angel.re": {
+                        "firstname": "Angel",
+                        "surname": "Reyes",
+                        "password": "AngelReyes2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "nuria.lo": {
+                        "firstname": "Nuria",
+                        "surname": "Lorenzo",
+                        "password": "NuriaLorenzo2016",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "pedro.na": {
+                        "firstname": "Pedro",
+                        "surname": "Navarro",
+                        "password": "PedroNavarro2017",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "beatriz.se": {
+                        "firstname": "Beatriz",
+                        "surname": "Serrano",
+                        "password": "BeatrizSerrano2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "luis.ca": {
+                        "firstname": "Luis",
+                        "surname": "Campos",
+                        "password": "LuisCampos2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "patricia.pa": {
+                        "firstname": "Patricia",
+                        "surname": "Pardo",
+                        "password": "PatriciaPardo2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "alberto.gi": {
+                        "firstname": "Alberto",
+                        "surname": "Gimenez",
+                        "password": "AlbertoGimenez2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "silvia.bl": {
+                        "firstname": "Silvia",
+                        "surname": "Blanco",
+                        "password": "SilviaBlanco2016",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "ruben.le": {
+                        "firstname": "Ruben",
+                        "surname": "Leon",
+                        "password": "RubenLeon2017",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "andrea.mo": {
+                        "firstname": "Andrea",
+                        "surname": "Mora",
+                        "password": "AndreaMora2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "alvaro.sa": {
+                        "firstname": "Alvaro",
+                        "surname": "Saez",
+                        "password": "AlvaroSaez2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "raquel.nu": {
+                        "firstname": "Raquel",
+                        "surname": "Nunez",
+                        "password": "RaquelNunez2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "adrian.ca": {
+                        "firstname": "Adrian",
+                        "surname": "Cano",
+                        "password": "AdrianCano2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "natalia.ro": {
+                        "firstname": "Natalia",
+                        "surname": "Rojas",
+                        "password": "NataliaRojas2016",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "ivan.vi": {
+                        "firstname": "Ivan",
+                        "surname": "Vicente",
+                        "password": "IvanVicente2017",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "paula.me": {
+                        "firstname": "Paula",
+                        "surname": "Medina",
+                        "password": "PaulaMedina2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "victor.ru": {
+                        "firstname": "Victor",
+                        "surname": "Rubio",
+                        "password": "VictorRubio2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "alicia.ga": {
+                        "firstname": "Alicia",
+                        "surname": "Gallego",
+                        "password": "AliciaGallego2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "jorge.me": {
+                        "firstname": "Jorge",
+                        "surname": "Mendez",
+                        "password": "JorgeMendez2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "irene.sa": {
+                        "firstname": "Irene",
+                        "surname": "Santos",
+                        "password": "IreneSantos2016",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "hector.br": {
+                        "firstname": "Hector",
+                        "surname": "Bravo",
+                        "password": "HectorBravo2017",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "lorena.mo": {
+                        "firstname": "Lorena",
+                        "surname": "Montero",
+                        "password": "LorenaMontero2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "ramon.di": {
+                        "firstname": "Ramon",
+                        "surname": "Diaz",
+                        "password": "RamonDiaz2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "teresa.ca": {
+                        "firstname": "Teresa",
+                        "surname": "Cabrera",
+                        "password": "TeresaCabrera2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "gonzalo.du": {
+                        "firstname": "Gonzalo",
+                        "surname": "Duran",
+                        "password": "GonzaloDuran2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "monica.ca": {
+                        "firstname": "Monica",
+                        "surname": "Calvo",
+                        "password": "MonicaCalvo2016",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "emilio.gi": {
+                        "firstname": "Emilio",
+                        "surname": "Gil",
+                        "password": "EmilioGil2017",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "sonia.va": {
+                        "firstname": "Sonia",
+                        "surname": "Vargas",
+                        "password": "SoniaVargas2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "ismael.ro": {
+                        "firstname": "Ismael",
+                        "surname": "Roman",
+                        "password": "IsmaelRoman2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "vega.ib": {
+                        "firstname": "Vega",
+                        "surname": "Ibanez",
+                        "password": "VegaIbanez2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "juan.m2": {
+                        "firstname": "Juan",
+                        "surname": "Molina",
+                        "password": "JuanMolina2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "maria.v2": {
+                        "firstname": "Maria",
+                        "surname": "Vela",
+                        "password": "MariaVela2016",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "antonio.a2": {
+                        "firstname": "Antonio",
+                        "surname": "Aguilar",
+                        "password": "AntonioAguilar2017",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "carmen.f2": {
+                        "firstname": "Carmen",
+                        "surname": "Ferrer",
+                        "password": "CarmenFerrer2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "jose.s2": {
+                        "firstname": "Jose",
+                        "surname": "Suarez",
+                        "password": "JoseSuarez2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "ana.h2": {
+                        "firstname": "Ana",
+                        "surname": "Herrera",
+                        "password": "AnaHerrera2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "manuel.v2": {
+                        "firstname": "Manuel",
+                        "surname": "Vidal",
+                        "password": "ManuelVidal2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de linea (envasado/curado)",
+                        "groups": [
+                            "Production Line Workers",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "laura.p2": {
+                        "firstname": "Laura",
+                        "surname": "Pascual",
+                        "password": "LauraPascual2017",
+                        "city": "Villalon de Campos",
+                        "description": "Jefe de turno de produccion",
+                        "groups": [
+                            "Production Shift Leaders",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "francisco.i2": {
+                        "firstname": "Francisco",
+                        "surname": "Iglesias",
+                        "password": "FranciscoIglesias2018",
+                        "city": "Villalon de Campos",
+                        "description": "Jefe de turno de produccion",
+                        "groups": [
+                            "Production Shift Leaders",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "isabel.g2": {
+                        "firstname": "Isabel",
+                        "surname": "Guerrero",
+                        "password": "IsabelGuerrero2019",
+                        "city": "Villalon de Campos",
+                        "description": "Jefe de turno de produccion",
+                        "groups": [
+                            "Production Shift Leaders",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "david.c2": {
+                        "firstname": "David",
+                        "surname": "Carrasco",
+                        "password": "DavidCarrasco2020",
+                        "city": "Villalon de Campos",
+                        "description": "Jefe de turno de produccion",
+                        "groups": [
+                            "Production Shift Leaders",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "sara.h2": {
+                        "firstname": "Sara",
+                        "surname": "Hidalgo",
+                        "password": "SaraHidalgo2021",
+                        "city": "Villalon de Campos",
+                        "description": "Jefe de turno de produccion",
+                        "groups": [
+                            "Production Shift Leaders",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "javier.c2": {
+                        "firstname": "Javier",
+                        "surname": "Cortes",
+                        "password": "JavierCortes2023",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "elena.s2": {
+                        "firstname": "Elena",
+                        "surname": "Soto",
+                        "password": "ElenaSoto2018",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "daniel.f2": {
+                        "firstname": "Daniel",
+                        "surname": "Franco",
+                        "password": "DanielFranco2019",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "rosa.l2": {
+                        "firstname": "Rosa",
+                        "surname": "Lopez",
+                        "password": "RosaLopez2020",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "sergio.m2": {
+                        "firstname": "Sergio",
+                        "surname": "Marin",
+                        "password": "SergioMarin2021",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "marta.c2": {
+                        "firstname": "Marta",
+                        "surname": "Crespo",
+                        "password": "MartaCrespo2022",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "miguel.p2": {
+                        "firstname": "Miguel",
+                        "surname": "Prieto",
+                        "password": "MiguelPrieto2023",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "cristina.r2": {
+                        "firstname": "Cristina",
+                        "surname": "Ramos",
+                        "password": "CristinaRamos2018",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "angel.r2": {
+                        "firstname": "Angel",
+                        "surname": "Reyes",
+                        "password": "AngelReyes2019",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "nuria.l2": {
+                        "firstname": "Nuria",
+                        "surname": "Lorenzo",
+                        "password": "NuriaLorenzo2020",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "pedro.n2": {
+                        "firstname": "Pedro",
+                        "surname": "Navarro",
+                        "password": "PedroNavarro2021",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "beatriz.s2": {
+                        "firstname": "Beatriz",
+                        "surname": "Serrano",
+                        "password": "BeatrizSerrano2022",
+                        "city": "Villalon de Campos",
+                        "description": "Logistica y transporte",
+                        "groups": [
+                            "Logistics & Transport",
+                            "All Staff",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "luis.c2": {
+                        "firstname": "Luis",
+                        "surname": "Campos",
+                        "password": "LuisCampos2024",
+                        "city": "Villalon de Campos",
+                        "description": "Auditor de calidad / APPCC",
+                        "groups": [
+                            "Quality Auditors",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "patricia.p2": {
+                        "firstname": "Patricia",
+                        "surname": "Pardo",
+                        "password": "PatriciaPardo2019",
+                        "city": "Villalon de Campos",
+                        "description": "Auditor de calidad / APPCC",
+                        "groups": [
+                            "Quality Auditors",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "alberto.g2": {
+                        "firstname": "Alberto",
+                        "surname": "Gimenez",
+                        "password": "AlbertoGimenez2020",
+                        "city": "Villalon de Campos",
+                        "description": "Auditor de calidad / APPCC",
+                        "groups": [
+                            "Quality Auditors",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "silvia.b2": {
+                        "firstname": "Silvia",
+                        "surname": "Blanco",
+                        "password": "SilviaBlanco2021",
+                        "city": "Villalon de Campos",
+                        "description": "Auditor de calidad / APPCC",
+                        "groups": [
+                            "Quality Auditors",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "ruben.l2": {
+                        "firstname": "Ruben",
+                        "surname": "Leon",
+                        "password": "RubenLeon2022",
+                        "city": "Villalon de Campos",
+                        "description": "Auditor de calidad / APPCC",
+                        "groups": [
+                            "Quality Auditors",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "andrea.m2": {
+                        "firstname": "Andrea",
+                        "surname": "Mora",
+                        "password": "AndreaMora2023",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "alvaro.s2": {
+                        "firstname": "Alvaro",
+                        "surname": "Saez",
+                        "password": "AlvaroSaez2024",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "raquel.n2": {
+                        "firstname": "Raquel",
+                        "surname": "Nunez",
+                        "password": "RaquelNunez2019",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "adrian.c2": {
+                        "firstname": "Adrian",
+                        "surname": "Cano",
+                        "password": "AdrianCano2020",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "natalia.r2": {
+                        "firstname": "Natalia",
+                        "surname": "Rojas",
+                        "password": "NataliaRojas2021",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "ivan.v2": {
+                        "firstname": "Ivan",
+                        "surname": "Vicente",
+                        "password": "IvanVicente2022",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "paula.m2": {
+                        "firstname": "Paula",
+                        "surname": "Medina",
+                        "password": "PaulaMedina2023",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "victor.r2": {
+                        "firstname": "Victor",
+                        "surname": "Rubio",
+                        "password": "VictorRubio2024",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "alicia.g2": {
+                        "firstname": "Alicia",
+                        "surname": "Gallego",
+                        "password": "AliciaGallego2019",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "jorge.m2": {
+                        "firstname": "Jorge",
+                        "surname": "Mendez",
+                        "password": "JorgeMendez2020",
+                        "city": "Villalon de Campos",
+                        "description": "Atencion al cliente",
+                        "groups": [
+                            "Customer Service",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "irene.s2": {
+                        "firstname": "Irene",
+                        "surname": "Santos",
+                        "password": "IreneSantos2022",
+                        "city": "Villalon de Campos",
+                        "description": "Back office comercial",
+                        "groups": [
+                            "Sales Back Office",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "hector.b2": {
+                        "firstname": "Hector",
+                        "surname": "Bravo",
+                        "password": "HectorBravo2023",
+                        "city": "Villalon de Campos",
+                        "description": "Back office comercial",
+                        "groups": [
+                            "Sales Back Office",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "lorena.m2": {
+                        "firstname": "Lorena",
+                        "surname": "Montero",
+                        "password": "LorenaMontero2024",
+                        "city": "Villalon de Campos",
+                        "description": "Back office comercial",
+                        "groups": [
+                            "Sales Back Office",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "ramon.d2": {
+                        "firstname": "Ramon",
+                        "surname": "Diaz",
+                        "password": "RamonDiaz2025",
+                        "city": "Villalon de Campos",
+                        "description": "Back office comercial",
+                        "groups": [
+                            "Sales Back Office",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "teresa.c2": {
+                        "firstname": "Teresa",
+                        "surname": "Cabrera",
+                        "password": "TeresaCabrera2019",
+                        "city": "Villalon de Campos",
+                        "description": "Cuentas a pagar",
+                        "groups": [
+                            "Accounts Payable",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "gonzalo.d2": {
+                        "firstname": "Gonzalo",
+                        "surname": "Duran",
+                        "password": "GonzaloDuran2020",
+                        "city": "Villalon de Campos",
+                        "description": "Cuentas a pagar",
+                        "groups": [
+                            "Accounts Payable",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "monica.c2": {
+                        "firstname": "Monica",
+                        "surname": "Calvo",
+                        "password": "MonicaCalvo2021",
+                        "city": "Villalon de Campos",
+                        "description": "Cuentas a pagar",
+                        "groups": [
+                            "Accounts Payable",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "emilio.g2": {
+                        "firstname": "Emilio",
+                        "surname": "Gil",
+                        "password": "EmilioGil2022",
+                        "city": "Villalon de Campos",
+                        "description": "Cuentas a pagar",
+                        "groups": [
+                            "Accounts Payable",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "sonia.v2": {
+                        "firstname": "Sonia",
+                        "surname": "Vargas",
+                        "password": "SoniaVargas2024",
+                        "city": "Villalon de Campos",
+                        "description": "Cuentas a cobrar",
+                        "groups": [
+                            "Accounts Receivable",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "ismael.r2": {
+                        "firstname": "Ismael",
+                        "surname": "Roman",
+                        "password": "IsmaelRoman2025",
+                        "city": "Villalon de Campos",
+                        "description": "Cuentas a cobrar",
+                        "groups": [
+                            "Accounts Receivable",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "vega.i2": {
+                        "firstname": "Vega",
+                        "surname": "Ibanez",
+                        "password": "VegaIbanez2020",
+                        "city": "Villalon de Campos",
+                        "description": "Cuentas a cobrar",
+                        "groups": [
+                            "Accounts Receivable",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate",
+                            "Fileshare Finance RW"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "juan.m3": {
+                        "firstname": "Juan",
+                        "surname": "Molina",
+                        "password": "JuanMolina2019",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de mantenimiento",
+                        "groups": [
+                            "Maintenance Technicians",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "maria.v3": {
+                        "firstname": "Maria",
+                        "surname": "Vela",
+                        "password": "MariaVela2020",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de mantenimiento",
+                        "groups": [
+                            "Maintenance Technicians",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "antonio.a3": {
+                        "firstname": "Antonio",
+                        "surname": "Aguilar",
+                        "password": "AntonioAguilar2021",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de mantenimiento",
+                        "groups": [
+                            "Maintenance Technicians",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "carmen.f3": {
+                        "firstname": "Carmen",
+                        "surname": "Ferrer",
+                        "password": "CarmenFerrer2022",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de mantenimiento",
+                        "groups": [
+                            "Maintenance Technicians",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "jose.s3": {
+                        "firstname": "Jose",
+                        "surname": "Suarez",
+                        "password": "JoseSuarez2023",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de mantenimiento",
+                        "groups": [
+                            "Maintenance Technicians",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "ana.h3": {
+                        "firstname": "Ana",
+                        "surname": "Herrera",
+                        "password": "AnaHerrera2018",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de mantenimiento",
+                        "groups": [
+                            "Maintenance Technicians",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Production RW",
+                            "CAD Software Users"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "manuel.v3": {
+                        "firstname": "Manuel",
+                        "surname": "Vidal",
+                        "password": "ManuelVidal2022",
+                        "city": "Villalon de Campos",
+                        "description": "Marketing digital",
+                        "groups": [
+                            "Digital Marketing",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Marketing,DC=redil,DC=local"
+                    },
+                    "laura.p3": {
+                        "firstname": "Laura",
+                        "surname": "Pascual",
+                        "password": "LauraPascual2023",
+                        "city": "Villalon de Campos",
+                        "description": "Marketing digital",
+                        "groups": [
+                            "Digital Marketing",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Marketing,DC=redil,DC=local"
+                    },
+                    "francisco.i3": {
+                        "firstname": "Francisco",
+                        "surname": "Iglesias",
+                        "password": "FranciscoIglesias2024",
+                        "city": "Villalon de Campos",
+                        "description": "Marketing digital",
+                        "groups": [
+                            "Digital Marketing",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Marketing,DC=redil,DC=local"
+                    },
+                    "isabel.g3": {
+                        "firstname": "Isabel",
+                        "surname": "Guerrero",
+                        "password": "IsabelGuerrero2025",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de soporte nivel 1",
+                        "groups": [
+                            "Service Desk L1",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "david.c3": {
+                        "firstname": "David",
+                        "surname": "Carrasco",
+                        "password": "DavidCarrasco2026",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de soporte nivel 1",
+                        "groups": [
+                            "Service Desk L1",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "sara.h3": {
+                        "firstname": "Sara",
+                        "surname": "Hidalgo",
+                        "password": "SaraHidalgo2021",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de soporte nivel 1",
+                        "groups": [
+                            "Service Desk L1",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "javier.c3": {
+                        "firstname": "Javier",
+                        "surname": "Cortes",
+                        "password": "JavierCortes2022",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de soporte nivel 1",
+                        "groups": [
+                            "Service Desk L1",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "elena.s3": {
+                        "firstname": "Elena",
+                        "surname": "Soto",
+                        "password": "ElenaSoto2024",
+                        "city": "Villalon de Campos",
+                        "description": "Becario de IT",
+                        "groups": [
+                            "IT Interns",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "daniel.f3": {
+                        "firstname": "Daniel",
+                        "surname": "Franco",
+                        "password": "DanielFranco2025",
+                        "city": "Villalon de Campos",
+                        "description": "Becario de IT",
+                        "groups": [
+                            "IT Interns",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "rosa.l3": {
+                        "firstname": "Rosa",
+                        "surname": "Lopez",
+                        "password": "RosaLopez2022",
+                        "city": "Villalon de Campos",
+                        "description": "Servicios generales",
+                        "groups": [
+                            "Facilities & Cleaning",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Management,DC=redil,DC=local"
+                    },
+                    "sergio.m3": {
+                        "firstname": "Sergio",
+                        "surname": "Marin",
+                        "password": "SergioMarin2023",
+                        "city": "Villalon de Campos",
+                        "description": "Servicios generales",
+                        "groups": [
+                            "Facilities & Cleaning",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Management,DC=redil,DC=local"
+                    },
+                    "marta.c3": {
+                        "firstname": "Marta",
+                        "surname": "Crespo",
+                        "password": "MartaCrespo2018",
+                        "city": "Villalon de Campos",
+                        "description": "Servicios generales",
+                        "groups": [
+                            "Facilities & Cleaning",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Management,DC=redil,DC=local"
+                    },
+                    "miguel.p3": {
+                        "firstname": "Miguel",
+                        "surname": "Prieto",
+                        "password": "MiguelPrieto2019",
+                        "city": "Villalon de Campos",
+                        "description": "Servicios generales",
+                        "groups": [
+                            "Facilities & Cleaning",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Management,DC=redil,DC=local"
+                    },
+                    "cristina.r3": {
+                        "firstname": "Cristina",
+                        "surname": "Ramos",
+                        "password": "CristinaRamos2021",
+                        "city": "Villalon de Campos",
+                        "description": "Recepcion",
+                        "groups": [
+                            "Reception",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Management,DC=redil,DC=local"
+                    },
+                    "angel.r3": {
+                        "firstname": "Angel",
+                        "surname": "Reyes",
+                        "password": "AngelReyes2022",
+                        "city": "Villalon de Campos",
+                        "description": "Recepcion",
+                        "groups": [
+                            "Reception",
+                            "All Staff",
+                            "ERP Users",
+                            "VPN Users",
+                            "WiFi Corporate"
+                        ],
+                        "path": "OU=Management,DC=redil,DC=local"
+                    },
+                    "nuria.l3": {
+                        "firstname": "Nuria",
+                        "surname": "Lorenzo",
+                        "password": "NuriaLorenzo2024",
+                        "city": "Villalon de Campos",
+                        "description": "I+D nuevos productos",
+                        "groups": [
+                            "R&D New Products",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "pedro.n3": {
+                        "firstname": "Pedro",
+                        "surname": "Navarro",
+                        "password": "PedroNavarro2025",
+                        "city": "Villalon de Campos",
+                        "description": "I+D nuevos productos",
+                        "groups": [
+                            "R&D New Products",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "beatriz.s3": {
+                        "firstname": "Beatriz",
+                        "surname": "Serrano",
+                        "password": "BeatrizSerrano2020",
+                        "city": "Villalon de Campos",
+                        "description": "I+D nuevos productos",
+                        "groups": [
+                            "R&D New Products",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "luis.c3": {
+                        "firstname": "Luis",
+                        "surname": "Campos",
+                        "password": "LuisCampos2021",
+                        "city": "Villalon de Campos",
+                        "description": "I+D nuevos productos",
+                        "groups": [
+                            "R&D New Products",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "patricia.p3": {
+                        "firstname": "Patricia",
+                        "surname": "Pardo",
+                        "password": "PatriciaPardo2022",
+                        "city": "Villalon de Campos",
+                        "description": "I+D nuevos productos",
+                        "groups": [
+                            "R&D New Products",
+                            "All Staff",
+                            "WiFi Corporate",
+                            "Fileshare Quality RW"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "alberto.g3": {
+                        "firstname": "Alberto",
+                        "surname": "Gimenez",
+                        "password": "AlbertoGimenez2025",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "silvia.b3": {
+                        "firstname": "Silvia",
+                        "surname": "Blanco",
+                        "password": "SilviaBlanco2026",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "ruben.l3": {
+                        "firstname": "Ruben",
+                        "surname": "Leon",
+                        "password": "RubenLeon2027",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "andrea.m3": {
+                        "firstname": "Andrea",
+                        "surname": "Mora",
+                        "password": "AndreaMora2022",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "alvaro.s3": {
+                        "firstname": "Alvaro",
+                        "surname": "Saez",
+                        "password": "AlvaroSaez2023",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "raquel.n3": {
+                        "firstname": "Raquel",
+                        "surname": "Nunez",
+                        "password": "RaquelNunez2024",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "adrian.c3": {
+                        "firstname": "Adrian",
+                        "surname": "Cano",
+                        "password": "AdrianCano2025",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "natalia.r3": {
+                        "firstname": "Natalia",
+                        "surname": "Rojas",
+                        "password": "NataliaRojas2026",
+                        "city": "Villalon de Campos",
+                        "description": "Contratista externo (temporal)",
+                        "groups": [
+                            "External Contractors",
+                            "All Staff"
+                        ],
+                        "path": "OU=Contractors,DC=redil,DC=local"
+                    },
+                    "svc_scanner": {
+                        "firstname": "Scanner",
+                        "surname": "MFP",
+                        "password": "Sc4nn3r-MFP!",
+                        "city": "Villalon de Campos",
+                        "description": "Cuenta de escaner / multifuncion (SMB)",
+                        "groups": [
+                            "Service Accounts",
+                            "All Staff"
+                        ],
+                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                    },
+                    "shared.info": {
+                        "firstname": "Buzon",
+                        "surname": "Info",
+                        "password": "Inf0-M@ilb0x",
+                        "city": "Villalon de Campos",
+                        "description": "Buzon compartido info@redil.local",
+                        "groups": [
+                            "All Staff"
+                        ],
+                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                    },
+                    "shared.pedidos": {
+                        "firstname": "Buzon",
+                        "surname": "Pedidos",
+                        "password": "P3d1d0s-M@il",
+                        "city": "Villalon de Campos",
+                        "description": "Buzon compartido pedidos@redil.local",
+                        "groups": [
+                            "All Staff"
+                        ],
+                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                    },
+                    "reception.pc": {
+                        "firstname": "PC",
+                        "surname": "Recepcion",
+                        "password": "R3cepc10n-PC",
+                        "city": "Villalon de Campos",
+                        "description": "Cuenta compartida del PC de recepcion",
+                        "groups": [
+                            "Reception",
+                            "All Staff"
+                        ],
+                        "path": "OU=SharedAccounts,DC=redil,DC=local"
+                    },
+                    "ivan.v3": {
+                        "firstname": "Ivan",
+                        "surname": "Vicente",
+                        "password": "IvanVicente2020",
+                        "city": "Villalon de Campos",
+                        "description": "Baja - empleado que ya no trabaja aqui",
+                        "groups": [],
+                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                    },
+                    "paula.m3": {
+                        "firstname": "Paula",
+                        "surname": "Medina",
+                        "password": "PaulaMedina2015",
+                        "city": "Villalon de Campos",
+                        "description": "Baja - empleado que ya no trabaja aqui",
+                        "groups": [],
+                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                    },
+                    "victor.r3": {
+                        "firstname": "Victor",
+                        "surname": "Rubio",
+                        "password": "VictorRubio2016",
+                        "city": "Villalon de Campos",
+                        "description": "Baja - empleado que ya no trabaja aqui",
+                        "groups": [],
+                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                    },
+                    "alicia.g3": {
+                        "firstname": "Alicia",
+                        "surname": "Gallego",
+                        "password": "AliciaGallego2017",
+                        "city": "Villalon de Campos",
+                        "description": "Baja - empleado que ya no trabaja aqui",
+                        "groups": [],
+                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
+                    },
+                    "jorge.m3": {
+                        "firstname": "Jorge",
+                        "surname": "Mendez",
+                        "password": "JorgeMendez2018",
+                        "city": "Villalon de Campos",
+                        "description": "Baja - empleado que ya no trabaja aqui",
+                        "groups": [],
+                        "path": "OU=DisabledAccounts,DC=redil,DC=local"
                     }
                 }
             }

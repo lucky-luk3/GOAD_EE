@@ -226,6 +226,103 @@ add_team(5, "Quality", ["Quality Lab"], 2019, "Tecnico de laboratorio/calidad")
 add_team(4, "Marketing", ["Marketing Team"], 2020, "Tecnico de marketing")
 add_team(2, "Management", ["Management Board"], 2017, "Direccion")
 
+# ===========================================================================
+# REALISM POPULATION  -  accounts & groups WITHOUT any path to Domain Admin.
+# Reflects a real, well-intentioned but not-very-mature company: department OUs
+# exist, service/shared/contractor/disabled accounts are separated, role and
+# resource groups are used - but structure is a bit inconsistent (some groups in
+# a central "Groups" OU, some still in department OUs).
+# Goal: keep users with a DA path at ~20-30% of the company.
+# ===========================================================================
+# --- extra organisational units (good intention, moderate maturity) --------
+for _ou in ["Contractors", "SharedAccounts", "DisabledAccounts", "Groups"]:
+    OUS.append(_ou)
+    organisation_units[_ou] = {"path": BASE}
+
+# --- benign groups (role + resource + distribution), all in OU=Groups -------
+BENIGN_GROUPS = [
+    # department sub-role groups (people, no escalation ACE)
+    "Production Line Workers", "Production Shift Leaders", "Logistics & Transport",
+    "Quality Auditors", "Customer Service", "Sales Back Office",
+    "Accounts Payable", "Accounts Receivable", "Maintenance Technicians",
+    "Digital Marketing", "Service Desk L1", "IT Interns", "Facilities & Cleaning",
+    "Reception", "R&D New Products", "External Contractors",
+    # resource / access groups (membership only, used on apps/shares/VPN)
+    "VPN Users", "Remote Access Users", "WiFi Corporate", "ERP Users",
+    "CAD Software Users", "Fileshare Finance RW", "Fileshare Finance RO",
+    "Fileshare Production RW", "Fileshare Quality RW", "SharePoint Contributors",
+    "SharePoint Readers", "Office Printer Admins",
+    # distribution / org-wide
+    "All Staff", "All Managers", "Department Heads",
+]
+for _g in BENIGN_GROUPS:
+    groups["global"][_g] = {"path": ou_path("Groups")}
+
+# --- path-less population across the company --------------------------------
+add_team(40, "Production", ["Production Line Workers"], 2016, "Operario de linea (envasado/curado)")
+add_team(5,  "Production", ["Production Shift Leaders"], 2017, "Jefe de turno de produccion")
+add_team(12, "Warehouse",  ["Logistics & Transport"], 2018, "Logistica y transporte")
+add_team(5,  "Quality",    ["Quality Auditors"], 2019, "Auditor de calidad / APPCC")
+add_team(10, "Sales",      ["Customer Service"], 2019, "Atencion al cliente")
+add_team(4,  "Sales",      ["Sales Back Office"], 2020, "Back office comercial")
+add_team(4,  "Finance",    ["Accounts Payable"], 2019, "Cuentas a pagar")
+add_team(3,  "Finance",    ["Accounts Receivable"], 2020, "Cuentas a cobrar")
+add_team(6,  "Maintenance", ["Maintenance Technicians"], 2018, "Tecnico de mantenimiento")
+add_team(3,  "Marketing",  ["Digital Marketing"], 2021, "Marketing digital")
+add_team(4,  "IT",         ["Service Desk L1"], 2021, "Tecnico de soporte nivel 1")
+add_team(2,  "IT",         ["IT Interns"], 2022, "Becario de IT")
+add_team(4,  "Management", ["Facilities & Cleaning"], 2018, "Servicios generales")
+add_team(2,  "Management", ["Reception"], 2019, "Recepcion")
+add_team(5,  "Quality",    ["R&D New Products"], 2020, "I+D nuevos productos")
+add_team(8,  "Contractors", ["External Contractors"], 2022, "Contratista externo (temporal)")
+
+# --- shared / generic accounts (a real company always has these) -----------
+add_user("svc_scanner", "Scanner", "MFP", "SharedAccounts", ["Service Accounts"],
+         "Sc4nn3r-MFP!", "Cuenta de escaner / multifuncion (SMB)")
+add_user("shared.info", "Buzon", "Info", "SharedAccounts", [],
+         "Inf0-M@ilb0x", "Buzon compartido info@redil.local")
+add_user("shared.pedidos", "Buzon", "Pedidos", "SharedAccounts", [],
+         "P3d1d0s-M@il", "Buzon compartido pedidos@redil.local")
+add_user("reception.pc", "PC", "Recepcion", "SharedAccounts", ["Reception"],
+         "R3cepc10n-PC", "Cuenta compartida del PC de recepcion")
+
+# --- disabled leaver accounts (disabled by scripts/attributes.ps1) ----------
+leavers = add_team(5, "DisabledAccounts", [], 2015, "Baja - empleado que ya no trabaja aqui")
+
+# --- membership mesh: benign role/resource/DL memberships (adds realism,
+#     never escalation). Applied to every user based on their OU. ------------
+def _ou_of(login):
+    p = users[login]["path"]
+    return p.split(",")[0].replace("OU=", "")
+
+office_ous = {"Sales", "Finance", "HR", "Marketing", "Purchasing", "IT", "Management", "Tier0"}
+for login, u in list(users.items()):
+    ou = _ou_of(login)
+    grps = u["groups"]
+    if ou == "DisabledAccounts":
+        continue
+    if "All Staff" not in grps:
+        grps.append("All Staff")
+    if ou in office_ous:
+        grps += ["ERP Users", "VPN Users", "WiFi Corporate"]
+    if ou in {"Production", "Maintenance", "Warehouse", "Quality"}:
+        grps.append("WiFi Corporate")
+    if ou == "Finance":
+        grps.append("Fileshare Finance RW")
+    if ou in {"Production", "Maintenance"}:
+        grps.append("Fileshare Production RW")
+    if ou in {"Maintenance"}:
+        grps.append("CAD Software Users")
+    if ou == "Quality":
+        grps.append("Fileshare Quality RW")
+    # de-duplicate, keep order
+    seen = set(); u["groups"] = [g for g in grps if not (g in seen or seen.add(g))]
+
+# department heads / managers (well-intentioned RBAC) -> benign DL ownership
+for _mgr in ["carlos.f", "admin.t0"]:
+    users[_mgr]["groups"].append("All Managers")
+    users[_mgr]["groups"].append("Department Heads")
+
 # ---------------------------------------------------------------------------
 # gMSA (payroll). HR Payroll Admins is granted read via scripts/gmsa_readers.ps1
 # ---------------------------------------------------------------------------
@@ -266,6 +363,20 @@ ace("D_gpo_wd_da",            "GPO Managers", "Domain Admins", "WriteDacl")
 # CHAIN E : Finance team -> backup.svc, which is a member of Backup Team
 #           => the path MERGES into CHAIN B at the "Backup Team" node.
 ace("E_finance_fcp_backupsvc", "Finance Department", "backup.svc", "Ext-User-Force-Change-Password")
+
+# --- BENIGN, NON-ESCALATING ACLs (roles with real permissions over objects,
+#     but every target is path-less, so they add NO route to Domain Admin) ---
+# Service Desk L1 can reset passwords of warehouse staff (operational only).
+ace("bg_servicedesk_fcp_warehouse", "Service Desk L1",
+    f"OU=Warehouse,{BASE}", "Ext-User-Force-Change-Password", "All")
+# "All Managers" owns/manages the "All Staff" distribution list (add/remove).
+ace("bg_managers_ga_allstaff", "All Managers", "All Staff", "GenericAll")
+# Department Heads can read (only) the Sales OU (reporting visibility).
+ace("bg_depthead_read_sales", "Department Heads", f"OU=Sales,{BASE}",
+    "ReadProperty", "All")
+# HR Department can read staff objects in Marketing OU (benign HR visibility).
+ace("bg_hr_read_marketing", "HR Department", f"OU=Marketing,{BASE}",
+    "ReadProperty", "All")
 
 # ---------------------------------------------------------------------------
 config = {

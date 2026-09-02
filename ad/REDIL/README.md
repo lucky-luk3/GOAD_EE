@@ -13,7 +13,15 @@ analysis has a rich, attractive graph to show.
 
 - **One VM**: only the Domain Controller (like `GOAD-Mini`/`MINILAB`). All the
   identities (users, groups, OUs, ACLs, gMSA, ADCS template ACL) live on the DC,
-  so ~84 identities cost a single machine.
+  so ~210 identities cost a single machine.
+- **Realistic company, not just attack paths.** ~205 active employees across all
+  departments, plus service/shared/contractor accounts and disabled leavers.
+  **Only ~27% of active users have any path to Domain Admin** — the rest are
+  ordinary staff. Many role/resource/distribution groups (VPN, ERP, file shares,
+  SharePoint, "All Staff", department sub-teams) and a few benign, scoped
+  permissions (e.g. Service Desk L1 resets only warehouse users; "All Managers"
+  owns the "All Staff" DL) exist **without** creating any escalation — the kind
+  of well-intentioned-but-imperfect RBAC a real, still-maturing IT team builds.
 - **English group names** (multi-market), **Spanish user logins**
   `name.<surname-initial>` (e.g. `lucia.g@redil.local`).
 - **5 escalation paths, each ≥ 5 hops to Domain Admins, walkable by MANY people.**
@@ -84,6 +92,30 @@ path (E) funnel through it, so the graph shows a clear convergence.
 Every edge above is one that SharpHound collects and GrexID renders:
 `MemberOf, ReadGMSAPassword, ForceChangePassword, GenericWrite, AddMember,
 GenericAll, WriteDacl, WriteOwner, AddSelf, ADCSESC4`.
+
+## Organisational structure & benign roles
+
+Department OUs (`Production`, `Warehouse`, `Sales`, `Finance`, `HR`, `Quality`,
+`Maintenance`, `Purchasing`, `Marketing`, `Management`, `IT`, `Tier0`) plus
+org-wide OUs the admin created with good intent: `ServiceAccounts`,
+`SharedAccounts`, `Contractors`, `DisabledAccounts`, `Groups`. Structure is
+deliberately a bit inconsistent (some groups in `OU=Groups`, the original ones
+still in department OUs) — a company that is maturing, not fully mature.
+
+Benign, **non-escalating** groups and permissions (present for realism, none of
+them reach Domain Admin):
+
+- **Role sub-teams**: Production Line Workers, Shift Leaders, Logistics &
+  Transport, Quality Auditors, Customer Service, Accounts Payable/Receivable,
+  Maintenance Technicians, Service Desk L1, R&D New Products, Reception…
+- **Resource/access groups**: VPN Users, WiFi Corporate, ERP Users, CAD Software
+  Users, Fileshare RW/RO groups, SharePoint Contributors/Readers, Office Printer
+  Admins.
+- **Distribution/org**: All Staff, All Managers, Department Heads.
+- **Scoped operational permissions** (lateral, never to DA): `Service Desk L1`
+  can reset passwords of `OU=Warehouse` users only; `All Managers` has
+  `GenericAll` over the `All Staff` distribution list; `Department Heads`/`HR`
+  have read-only visibility over certain OUs.
 
 ## Custom scripts (run on the DC, after AD data + ACLs)
 
