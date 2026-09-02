@@ -3,8 +3,8 @@
 Import-Module ActiveDirectory
 
 # --- AS-REP roastable users (Do not require Kerberos pre-authentication) -----
-# These are foothold accounts for chains A and C (+ a legacy finance account).
-$asrep = @("lucia.g", "noelia.s", "marcos.v")
+# Multiple foothold accounts per path (chains A, C, E) so several people can start.
+$asrep = @("lucia.g", "marta.b", "noelia.s", "emilio.c", "marcos.v")
 foreach ($u in $asrep) {
     try {
         Get-ADUser -Identity $u | Set-ADAccountControl -DoesNotRequirePreAuth $true

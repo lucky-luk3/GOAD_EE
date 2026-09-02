@@ -74,8 +74,7 @@
                     "universal": {},
                     "global": {
                         "Tier0 Admins": {
-                            "path": "OU=Tier0,DC=redil,DC=local",
-                            "members": []
+                            "path": "OU=Tier0,DC=redil,DC=local"
                         },
                         "Server Administrators": {
                             "path": "OU=IT,DC=redil,DC=local"
@@ -97,6 +96,9 @@
                         },
                         "Helpdesk Operators": {
                             "path": "OU=IT,DC=redil,DC=local"
+                        },
+                        "OT SCADA Admins": {
+                            "path": "OU=Maintenance,DC=redil,DC=local"
                         },
                         "Management Board": {
                             "path": "OU=Management,DC=redil,DC=local"
@@ -120,12 +122,6 @@
                             "path": "OU=Production,DC=redil,DC=local"
                         },
                         "Maintenance Engineers": {
-                            "path": "OU=Maintenance,DC=redil,DC=local"
-                        },
-                        "Maintenance Staff": {
-                            "path": "OU=Maintenance,DC=redil,DC=local"
-                        },
-                        "OT SCADA Admins": {
                             "path": "OU=Maintenance,DC=redil,DC=local"
                         },
                         "Warehouse Staff": {
@@ -193,7 +189,7 @@
                         "right": "WriteDacl",
                         "inheritance": "None"
                     },
-                    "B_serveradmins_ga_admint0": {
+                    "B_serveradmins_ga_t0": {
                         "for": "Server Administrators",
                         "to": "admin.t0",
                         "right": "GenericAll",
@@ -223,16 +219,28 @@
                         "right": "Ext-User-Force-Change-Password",
                         "inheritance": "None"
                     },
-                    "D_ivan_wo_gpomgr": {
+                    "D_ivan_gw_scada": {
                         "for": "ivan.o",
+                        "to": "OT SCADA Admins",
+                        "right": "GenericWrite",
+                        "inheritance": "None"
+                    },
+                    "D_scada_wo_gpo": {
+                        "for": "OT SCADA Admins",
                         "to": "GPO Managers",
                         "right": "WriteOwner",
                         "inheritance": "None"
                     },
-                    "D_gpomgr_wd_da": {
+                    "D_gpo_wd_da": {
                         "for": "GPO Managers",
                         "to": "Domain Admins",
                         "right": "WriteDacl",
+                        "inheritance": "None"
+                    },
+                    "E_finance_fcp_backupsvc": {
+                        "for": "Finance Department",
+                        "to": "backup.svc",
+                        "right": "Ext-User-Force-Change-Password",
                         "inheritance": "None"
                     }
                 },
@@ -267,6 +275,54 @@
                         "surname": "Garcia",
                         "password": "Lucia2021",
                         "city": "Villalon de Campos",
+                        "description": "Responsable de nominas (AS-REP roastable)",
+                        "groups": [
+                            "HR Department",
+                            "HR Payroll Admins"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
+                    "marta.b": {
+                        "firstname": "Marta",
+                        "surname": "Blanco",
+                        "password": "Marta2020",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de nominas (AS-REP roastable)",
+                        "groups": [
+                            "HR Department",
+                            "HR Payroll Admins"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
+                    "juan.m": {
+                        "firstname": "Juan",
+                        "surname": "Molina",
+                        "password": "JuanMolina2020",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de nominas",
+                        "groups": [
+                            "HR Department",
+                            "HR Payroll Admins"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
+                    "maria.v": {
+                        "firstname": "Maria",
+                        "surname": "Vela",
+                        "password": "MariaVela2021",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de nominas",
+                        "groups": [
+                            "HR Department",
+                            "HR Payroll Admins"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
+                    "antonio.a": {
+                        "firstname": "Antonio",
+                        "surname": "Aguilar",
+                        "password": "AntonioAguilar2022",
+                        "city": "Villalon de Campos",
                         "description": "Tecnico de nominas",
                         "groups": [
                             "HR Department",
@@ -297,6 +353,50 @@
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
+                    "carmen.f": {
+                        "firstname": "Carmen",
+                        "surname": "Ferrer",
+                        "password": "CarmenFerrer2022",
+                        "city": "Villalon de Campos",
+                        "description": "HR Department - empleado",
+                        "groups": [
+                            "HR Department"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
+                    "jose.s": {
+                        "firstname": "Jose",
+                        "surname": "Suarez",
+                        "password": "JoseSuarez2023",
+                        "city": "Villalon de Campos",
+                        "description": "HR Department - empleado",
+                        "groups": [
+                            "HR Department"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
+                    "ana.h": {
+                        "firstname": "Ana",
+                        "surname": "Herrera",
+                        "password": "AnaHerrera2018",
+                        "city": "Villalon de Campos",
+                        "description": "HR Department - empleado",
+                        "groups": [
+                            "HR Department"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
+                    "manuel.v": {
+                        "firstname": "Manuel",
+                        "surname": "Vidal",
+                        "password": "ManuelVidal2019",
+                        "city": "Villalon de Campos",
+                        "description": "HR Department - empleado",
+                        "groups": [
+                            "HR Department"
+                        ],
+                        "path": "OU=HR,DC=redil,DC=local"
+                    },
                     "svc_erp": {
                         "firstname": "Service",
                         "surname": "ERP",
@@ -313,6 +413,30 @@
                             "HTTP/erp"
                         ]
                     },
+                    "laura.p": {
+                        "firstname": "Laura",
+                        "surname": "Pascual",
+                        "password": "LauraPascual2022",
+                        "city": "Villalon de Campos",
+                        "description": "Administrador de bases de datos",
+                        "groups": [
+                            "IT Support",
+                            "Database Administrators"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "francisco.i": {
+                        "firstname": "Francisco",
+                        "surname": "Iglesias",
+                        "password": "FranciscoIglesias2023",
+                        "city": "Villalon de Campos",
+                        "description": "Administrador de bases de datos",
+                        "groups": [
+                            "IT Support",
+                            "Database Administrators"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
                     "raul.b": {
                         "firstname": "Raul",
                         "surname": "Benitez",
@@ -324,12 +448,113 @@
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
+                    "isabel.g": {
+                        "firstname": "Isabel",
+                        "surname": "Guerrero",
+                        "password": "IsabelGuerrero2025",
+                        "city": "Villalon de Campos",
+                        "description": "Administrador de servidores",
+                        "groups": [
+                            "IT Support",
+                            "Server Administrators"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "david.c": {
+                        "firstname": "David",
+                        "surname": "Carrasco",
+                        "password": "DavidCarrasco2026",
+                        "city": "Villalon de Campos",
+                        "description": "Administrador de servidores",
+                        "groups": [
+                            "IT Support",
+                            "Server Administrators"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
                     "noelia.s": {
                         "firstname": "Noelia",
                         "surname": "Sanz",
                         "password": "Noelia2022",
                         "city": "Villalon de Campos",
-                        "description": "Comercial de zona norte",
+                        "description": "Comercial de zona norte (AS-REP roastable)",
+                        "groups": [
+                            "Sales Department"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "emilio.c": {
+                        "firstname": "Emilio",
+                        "surname": "Cortes",
+                        "password": "Emilio2021",
+                        "city": "Villalon de Campos",
+                        "description": "Comercial de exportacion (AS-REP roastable)",
+                        "groups": [
+                            "Sales Department"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "sara.h": {
+                        "firstname": "Sara",
+                        "surname": "Hidalgo",
+                        "password": "SaraHidalgo2019",
+                        "city": "Villalon de Campos",
+                        "description": "Comercial",
+                        "groups": [
+                            "Sales Department"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "javier.c": {
+                        "firstname": "Javier",
+                        "surname": "Cortes",
+                        "password": "JavierCortes2020",
+                        "city": "Villalon de Campos",
+                        "description": "Comercial",
+                        "groups": [
+                            "Sales Department"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "elena.s": {
+                        "firstname": "Elena",
+                        "surname": "Soto",
+                        "password": "ElenaSoto2021",
+                        "city": "Villalon de Campos",
+                        "description": "Comercial",
+                        "groups": [
+                            "Sales Department"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "daniel.f": {
+                        "firstname": "Daniel",
+                        "surname": "Franco",
+                        "password": "DanielFranco2022",
+                        "city": "Villalon de Campos",
+                        "description": "Comercial",
+                        "groups": [
+                            "Sales Department"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "rosa.l": {
+                        "firstname": "Rosa",
+                        "surname": "Lopez",
+                        "password": "RosaLopez2023",
+                        "city": "Villalon de Campos",
+                        "description": "Comercial",
+                        "groups": [
+                            "Sales Department"
+                        ],
+                        "path": "OU=Sales,DC=redil,DC=local"
+                    },
+                    "sergio.m": {
+                        "firstname": "Sergio",
+                        "surname": "Marin",
+                        "password": "SergioMarin2024",
+                        "city": "Villalon de Campos",
+                        "description": "Comercial",
                         "groups": [
                             "Sales Department"
                         ],
@@ -341,6 +566,39 @@
                         "password": "Pablo.Castro.91",
                         "city": "Villalon de Campos",
                         "description": "Responsable de compras",
+                        "groups": [
+                            "Purchasing Department"
+                        ],
+                        "path": "OU=Purchasing,DC=redil,DC=local"
+                    },
+                    "marta.c": {
+                        "firstname": "Marta",
+                        "surname": "Crespo",
+                        "password": "MartaCrespo2020",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de compras",
+                        "groups": [
+                            "Purchasing Department"
+                        ],
+                        "path": "OU=Purchasing,DC=redil,DC=local"
+                    },
+                    "miguel.p": {
+                        "firstname": "Miguel",
+                        "surname": "Prieto",
+                        "password": "MiguelPrieto2021",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de compras",
+                        "groups": [
+                            "Purchasing Department"
+                        ],
+                        "path": "OU=Purchasing,DC=redil,DC=local"
+                    },
+                    "cristina.r": {
+                        "firstname": "Cristina",
+                        "surname": "Ramos",
+                        "password": "CristinaRamos2022",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de compras",
                         "groups": [
                             "Purchasing Department"
                         ],
@@ -358,28 +616,351 @@
                         ],
                         "path": "OU=IT,DC=redil,DC=local"
                     },
-                    "oscar.p": {
-                        "firstname": "Oscar",
-                        "surname": "Pastor",
-                        "password": "Verano2024",
+                    "angel.r": {
+                        "firstname": "Angel",
+                        "surname": "Reyes",
+                        "password": "AngelReyes2025",
                         "city": "Villalon de Campos",
-                        "description": "Operario de produccion (linea de curado). (pwd temporal: Verano2024)",
+                        "description": "Administrador de la PKI interna",
+                        "groups": [
+                            "IT Support",
+                            "PKI Administrators"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "nuria.l": {
+                        "firstname": "Nuria",
+                        "surname": "Lorenzo",
+                        "password": "NuriaLorenzo2022",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
                         "groups": [
                             "Production Operators"
                         ],
                         "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "pedro.n": {
+                        "firstname": "Pedro",
+                        "surname": "Navarro",
+                        "password": "PedroNavarro2023",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "beatriz.s": {
+                        "firstname": "Beatriz",
+                        "surname": "Serrano",
+                        "password": "BeatrizSerrano2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "luis.c": {
+                        "firstname": "Luis",
+                        "surname": "Campos",
+                        "password": "LuisCampos2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "patricia.p": {
+                        "firstname": "Patricia",
+                        "surname": "Pardo",
+                        "password": "PatriciaPardo2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "alberto.g": {
+                        "firstname": "Alberto",
+                        "surname": "Gimenez",
+                        "password": "AlbertoGimenez2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "silvia.b": {
+                        "firstname": "Silvia",
+                        "surname": "Blanco",
+                        "password": "SilviaBlanco2022",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "ruben.l": {
+                        "firstname": "Ruben",
+                        "surname": "Leon",
+                        "password": "RubenLeon2023",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "andrea.m": {
+                        "firstname": "Andrea",
+                        "surname": "Mora",
+                        "password": "AndreaMora2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "alvaro.s": {
+                        "firstname": "Alvaro",
+                        "surname": "Saez",
+                        "password": "AlvaroSaez2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "raquel.n": {
+                        "firstname": "Raquel",
+                        "surname": "Nunez",
+                        "password": "RaquelNunez2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "adrian.c": {
+                        "firstname": "Adrian",
+                        "surname": "Cano",
+                        "password": "AdrianCano2021",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "natalia.r": {
+                        "firstname": "Natalia",
+                        "surname": "Rojas",
+                        "password": "NataliaRojas2022",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "ivan.v": {
+                        "firstname": "Ivan",
+                        "surname": "Vicente",
+                        "password": "IvanVicente2023",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "paula.m": {
+                        "firstname": "Paula",
+                        "surname": "Medina",
+                        "password": "PaulaMedina2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de produccion (linea de curado)",
+                        "groups": [
+                            "Production Operators"
+                        ],
+                        "path": "OU=Production,DC=redil,DC=local"
+                    },
+                    "victor.r": {
+                        "firstname": "Victor",
+                        "surname": "Rubio",
+                        "password": "VictorRubio2020",
+                        "city": "Villalon de Campos",
+                        "description": "Ingeniero de mantenimiento industrial",
+                        "groups": [
+                            "Maintenance Engineers"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "alicia.g": {
+                        "firstname": "Alicia",
+                        "surname": "Gallego",
+                        "password": "AliciaGallego2021",
+                        "city": "Villalon de Campos",
+                        "description": "Ingeniero de mantenimiento industrial",
+                        "groups": [
+                            "Maintenance Engineers"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "jorge.m": {
+                        "firstname": "Jorge",
+                        "surname": "Mendez",
+                        "password": "JorgeMendez2022",
+                        "city": "Villalon de Campos",
+                        "description": "Ingeniero de mantenimiento industrial",
+                        "groups": [
+                            "Maintenance Engineers"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "irene.s": {
+                        "firstname": "Irene",
+                        "surname": "Santos",
+                        "password": "IreneSantos2023",
+                        "city": "Villalon de Campos",
+                        "description": "Ingeniero de mantenimiento industrial",
+                        "groups": [
+                            "Maintenance Engineers"
+                        ],
+                        "path": "OU=Maintenance,DC=redil,DC=local"
                     },
                     "ivan.o": {
                         "firstname": "Ivan",
                         "surname": "Ortega",
                         "password": "Sc4da_Maint#21",
                         "city": "Villalon de Campos",
-                        "description": "Ingeniero de mantenimiento industrial / SCADA",
+                        "description": "Ingeniero SCADA / OT (cuenta privilegiada)",
                         "groups": [
-                            "Maintenance Engineers",
                             "OT SCADA Admins"
                         ],
                         "path": "OU=Maintenance,DC=redil,DC=local"
+                    },
+                    "hector.b": {
+                        "firstname": "Hector",
+                        "surname": "Bravo",
+                        "password": "HectorBravo2026",
+                        "city": "Villalon de Campos",
+                        "description": "Gestor de politicas de grupo (GPO)",
+                        "groups": [
+                            "GPO Managers",
+                            "IT Support"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "lorena.m": {
+                        "firstname": "Lorena",
+                        "surname": "Montero",
+                        "password": "LorenaMontero2021",
+                        "city": "Villalon de Campos",
+                        "description": "Gestor de politicas de grupo (GPO)",
+                        "groups": [
+                            "GPO Managers",
+                            "IT Support"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
+                    },
+                    "marcos.v": {
+                        "firstname": "Marcos",
+                        "surname": "Vega",
+                        "password": "Marcos2020",
+                        "city": "Villalon de Campos",
+                        "description": "Contable senior (cuenta antigua, sin preautenticacion)",
+                        "groups": [
+                            "Finance Department"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "ramon.d": {
+                        "firstname": "Ramon",
+                        "surname": "Diaz",
+                        "password": "RamonDiaz2020",
+                        "city": "Villalon de Campos",
+                        "description": "Contable",
+                        "groups": [
+                            "Finance Department"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "teresa.c": {
+                        "firstname": "Teresa",
+                        "surname": "Cabrera",
+                        "password": "TeresaCabrera2021",
+                        "city": "Villalon de Campos",
+                        "description": "Contable",
+                        "groups": [
+                            "Finance Department"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "gonzalo.d": {
+                        "firstname": "Gonzalo",
+                        "surname": "Duran",
+                        "password": "GonzaloDuran2022",
+                        "city": "Villalon de Campos",
+                        "description": "Contable",
+                        "groups": [
+                            "Finance Department"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "monica.c": {
+                        "firstname": "Monica",
+                        "surname": "Calvo",
+                        "password": "MonicaCalvo2023",
+                        "city": "Villalon de Campos",
+                        "description": "Contable",
+                        "groups": [
+                            "Finance Department"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "emilio.g": {
+                        "firstname": "Emilio",
+                        "surname": "Gil",
+                        "password": "EmilioGil2024",
+                        "city": "Villalon de Campos",
+                        "description": "Contable",
+                        "groups": [
+                            "Finance Department"
+                        ],
+                        "path": "OU=Finance,DC=redil,DC=local"
+                    },
+                    "backup.svc": {
+                        "firstname": "Service",
+                        "surname": "Backup",
+                        "password": "B4ckup$vc!",
+                        "city": "Villalon de Campos",
+                        "description": "Cuenta de servicio de copias (Veeam) - miembro de Backup Team",
+                        "groups": [
+                            "Service Accounts",
+                            "Backup Team"
+                        ],
+                        "path": "OU=ServiceAccounts,DC=redil,DC=local"
+                    },
+                    "sonia.v": {
+                        "firstname": "Sonia",
+                        "surname": "Vargas",
+                        "password": "SoniaVargas2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operador de copias de seguridad",
+                        "groups": [
+                            "IT Support",
+                            "Backup Team"
+                        ],
+                        "path": "OU=IT,DC=redil,DC=local"
                     },
                     "svc_sql": {
                         "firstname": "Service",
@@ -401,7 +982,7 @@
                         "surname": "Web",
                         "password": "W3b$vc_2020",
                         "city": "Villalon de Campos",
-                        "description": "Cuenta de servicio del portal web de pedidos",
+                        "description": "Cuenta de servicio del portal de pedidos",
                         "groups": [
                             "Service Accounts"
                         ],
@@ -410,523 +991,214 @@
                             "HTTP/pedidos.redil.local"
                         ]
                     },
-                    "marcos.v": {
-                        "firstname": "Marcos",
-                        "surname": "Vega",
-                        "password": "Marcos2020",
-                        "city": "Villalon de Campos",
-                        "description": "Contable - cuenta antigua sin preautenticacion",
-                        "groups": [
-                            "Finance Department"
-                        ],
-                        "path": "OU=Finance,DC=redil,DC=local"
-                    },
-                    "backup.svc": {
-                        "firstname": "Service",
-                        "surname": "Backup",
-                        "password": "B4ckup$vc!",
-                        "city": "Villalon de Campos",
-                        "description": "Cuenta de servicio de copias de seguridad (Veeam)",
-                        "groups": [
-                            "Service Accounts",
-                            "Backup Team"
-                        ],
-                        "path": "OU=ServiceAccounts,DC=redil,DC=local"
-                    },
-                    "juan.g": {
-                        "firstname": "Juan",
-                        "surname": "Gil",
-                        "password": "JuanGil2019",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "maria.m": {
-                        "firstname": "Maria",
-                        "surname": "Medina",
-                        "password": "MariaMedina2020",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "antonio.c": {
-                        "firstname": "Antonio",
-                        "surname": "Campos",
-                        "password": "AntonioCampos2021",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "carmen.r": {
-                        "firstname": "Carmen",
-                        "surname": "Rubio",
-                        "password": "CarmenRubio2022",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "jose.p": {
-                        "firstname": "Jose",
-                        "surname": "Pardo",
-                        "password": "JosePardo2023",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "ana.f": {
-                        "firstname": "Ana",
-                        "surname": "Franco",
-                        "password": "AnaFranco2024",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "manuel.m": {
-                        "firstname": "Manuel",
-                        "surname": "Molina",
-                        "password": "ManuelMolina2018",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "laura.s": {
-                        "firstname": "Laura",
-                        "surname": "Santos",
-                        "password": "LauraSantos2019",
-                        "city": "Villalon de Campos",
-                        "description": "Production Operators - empleado",
-                        "groups": [
-                            "Production Operators"
-                        ],
-                        "path": "OU=Production,DC=redil,DC=local"
-                    },
-                    "francisco.l": {
-                        "firstname": "Francisco",
-                        "surname": "Leon",
-                        "password": "FranciscoLeon2020",
-                        "city": "Villalon de Campos",
-                        "description": "Warehouse Staff - empleado",
-                        "groups": [
-                            "Warehouse Staff"
-                        ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
-                    },
-                    "isabel.b": {
-                        "firstname": "Isabel",
-                        "surname": "Bravo",
-                        "password": "IsabelBravo2021",
-                        "city": "Villalon de Campos",
-                        "description": "Warehouse Staff - empleado",
-                        "groups": [
-                            "Warehouse Staff"
-                        ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
-                    },
-                    "david.m": {
-                        "firstname": "David",
-                        "surname": "Mora",
-                        "password": "DavidMora2022",
-                        "city": "Villalon de Campos",
-                        "description": "Warehouse Staff - empleado",
-                        "groups": [
-                            "Warehouse Staff"
-                        ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
-                    },
-                    "sara.l": {
-                        "firstname": "Sara",
-                        "surname": "Lopez",
-                        "password": "SaraLopez2023",
-                        "city": "Villalon de Campos",
-                        "description": "Warehouse Staff - empleado",
-                        "groups": [
-                            "Warehouse Staff"
-                        ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
-                    },
-                    "javier.s": {
-                        "firstname": "Javier",
-                        "surname": "Suarez",
-                        "password": "JavierSuarez2024",
-                        "city": "Villalon de Campos",
-                        "description": "Warehouse Staff - empleado",
-                        "groups": [
-                            "Warehouse Staff"
-                        ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
-                    },
-                    "elena.c": {
-                        "firstname": "Elena",
-                        "surname": "Cabrera",
-                        "password": "ElenaCabrera2018",
-                        "city": "Villalon de Campos",
-                        "description": "Warehouse Staff - empleado",
-                        "groups": [
-                            "Warehouse Staff"
-                        ],
-                        "path": "OU=Warehouse,DC=redil,DC=local"
-                    },
-                    "daniel.p": {
-                        "firstname": "Daniel",
-                        "surname": "Peña",
-                        "password": "DanielPeña2019",
-                        "city": "Villalon de Campos",
-                        "description": "Sales Department - empleado",
-                        "groups": [
-                            "Sales Department"
-                        ],
-                        "path": "OU=Sales,DC=redil,DC=local"
-                    },
-                    "rosa.d": {
-                        "firstname": "Rosa",
-                        "surname": "Duran",
-                        "password": "RosaDuran2020",
-                        "city": "Villalon de Campos",
-                        "description": "Sales Department - empleado",
-                        "groups": [
-                            "Sales Department"
-                        ],
-                        "path": "OU=Sales,DC=redil,DC=local"
-                    },
-                    "sergio.r": {
-                        "firstname": "Sergio",
-                        "surname": "Rojas",
-                        "password": "SergioRojas2021",
-                        "city": "Villalon de Campos",
-                        "description": "Sales Department - empleado",
-                        "groups": [
-                            "Sales Department"
-                        ],
-                        "path": "OU=Sales,DC=redil,DC=local"
-                    },
-                    "marta.r": {
-                        "firstname": "Marta",
-                        "surname": "Ramos",
-                        "password": "MartaRamos2022",
-                        "city": "Villalon de Campos",
-                        "description": "Sales Department - empleado",
-                        "groups": [
-                            "Sales Department"
-                        ],
-                        "path": "OU=Sales,DC=redil,DC=local"
-                    },
-                    "miguel.i": {
-                        "firstname": "Miguel",
-                        "surname": "Iglesias",
-                        "password": "MiguelIglesias2023",
-                        "city": "Villalon de Campos",
-                        "description": "Sales Department - empleado",
-                        "groups": [
-                            "Sales Department"
-                        ],
-                        "path": "OU=Sales,DC=redil,DC=local"
-                    },
-                    "cristina.v": {
-                        "firstname": "Cristina",
-                        "surname": "Vargas",
-                        "password": "CristinaVargas2024",
-                        "city": "Villalon de Campos",
-                        "description": "Sales Department - empleado",
-                        "groups": [
-                            "Sales Department"
-                        ],
-                        "path": "OU=Sales,DC=redil,DC=local"
-                    },
-                    "angel.g": {
-                        "firstname": "Angel",
-                        "surname": "Guerrero",
-                        "password": "AngelGuerrero2018",
-                        "city": "Villalon de Campos",
-                        "description": "Quality Lab - empleado",
-                        "groups": [
-                            "Quality Lab"
-                        ],
-                        "path": "OU=Quality,DC=redil,DC=local"
-                    },
-                    "nuria.r": {
-                        "firstname": "Nuria",
+                    "ismael.r": {
+                        "firstname": "Ismael",
                         "surname": "Roman",
-                        "password": "NuriaRoman2019",
+                        "password": "IsmaelRoman2019",
                         "city": "Villalon de Campos",
-                        "description": "Quality Lab - empleado",
+                        "description": "Operario de almacen",
                         "groups": [
-                            "Quality Lab"
+                            "Warehouse Staff"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Warehouse,DC=redil,DC=local"
                     },
-                    "pedro.g": {
-                        "firstname": "Pedro",
-                        "surname": "Gallego",
-                        "password": "PedroGallego2020",
+                    "vega.i": {
+                        "firstname": "Vega",
+                        "surname": "Ibanez",
+                        "password": "VegaIbanez2020",
                         "city": "Villalon de Campos",
-                        "description": "Quality Lab - empleado",
+                        "description": "Operario de almacen",
                         "groups": [
-                            "Quality Lab"
+                            "Warehouse Staff"
                         ],
-                        "path": "OU=Quality,DC=redil,DC=local"
+                        "path": "OU=Warehouse,DC=redil,DC=local"
                     },
-                    "beatriz.s": {
-                        "firstname": "Beatriz",
-                        "surname": "Serrano",
-                        "password": "BeatrizSerrano2021",
-                        "city": "Villalon de Campos",
-                        "description": "Quality Lab - empleado",
-                        "groups": [
-                            "Quality Lab"
-                        ],
-                        "path": "OU=Quality,DC=redil,DC=local"
-                    },
-                    "luis.c": {
-                        "firstname": "Luis",
-                        "surname": "Cortes",
-                        "password": "LuisCortes2022",
-                        "city": "Villalon de Campos",
-                        "description": "Finance Department - empleado",
-                        "groups": [
-                            "Finance Department"
-                        ],
-                        "path": "OU=Finance,DC=redil,DC=local"
-                    },
-                    "patricia.v": {
-                        "firstname": "Patricia",
-                        "surname": "Vela",
-                        "password": "PatriciaVela2023",
-                        "city": "Villalon de Campos",
-                        "description": "Finance Department - empleado",
-                        "groups": [
-                            "Finance Department"
-                        ],
-                        "path": "OU=Finance,DC=redil,DC=local"
-                    },
-                    "alberto.s": {
-                        "firstname": "Alberto",
-                        "surname": "Soto",
-                        "password": "AlbertoSoto2024",
-                        "city": "Villalon de Campos",
-                        "description": "Finance Department - empleado",
-                        "groups": [
-                            "Finance Department"
-                        ],
-                        "path": "OU=Finance,DC=redil,DC=local"
-                    },
-                    "silvia.a": {
-                        "firstname": "Silvia",
-                        "surname": "Aguilar",
-                        "password": "SilviaAguilar2018",
-                        "city": "Villalon de Campos",
-                        "description": "HR Department - empleado",
-                        "groups": [
-                            "HR Department"
-                        ],
-                        "path": "OU=HR,DC=redil,DC=local"
-                    },
-                    "ruben.m": {
-                        "firstname": "Ruben",
-                        "surname": "Montero",
-                        "password": "RubenMontero2019",
-                        "city": "Villalon de Campos",
-                        "description": "HR Department - empleado",
-                        "groups": [
-                            "HR Department"
-                        ],
-                        "path": "OU=HR,DC=redil,DC=local"
-                    },
-                    "andrea.b": {
-                        "firstname": "Andrea",
-                        "surname": "Blanco",
-                        "password": "AndreaBlanco2020",
-                        "city": "Villalon de Campos",
-                        "description": "HR Department - empleado",
-                        "groups": [
-                            "HR Department"
-                        ],
-                        "path": "OU=HR,DC=redil,DC=local"
-                    },
-                    "alvaro.m": {
-                        "firstname": "Alvaro",
-                        "surname": "Marin",
-                        "password": "AlvaroMarin2021",
-                        "city": "Villalon de Campos",
-                        "description": "Marketing Team - empleado",
-                        "groups": [
-                            "Marketing Team"
-                        ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
-                    },
-                    "raquel.h": {
-                        "firstname": "Raquel",
-                        "surname": "Herrera",
-                        "password": "RaquelHerrera2022",
-                        "city": "Villalon de Campos",
-                        "description": "Marketing Team - empleado",
-                        "groups": [
-                            "Marketing Team"
-                        ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
-                    },
-                    "adrian.c": {
-                        "firstname": "Adrian",
-                        "surname": "Crespo",
-                        "password": "AdrianCrespo2023",
-                        "city": "Villalon de Campos",
-                        "description": "Marketing Team - empleado",
-                        "groups": [
-                            "Marketing Team"
-                        ],
-                        "path": "OU=Marketing,DC=redil,DC=local"
-                    },
-                    "natalia.v": {
-                        "firstname": "Natalia",
-                        "surname": "Vidal",
-                        "password": "NataliaVidal2024",
-                        "city": "Villalon de Campos",
-                        "description": "Purchasing Department - empleado",
-                        "groups": [
-                            "Purchasing Department"
-                        ],
-                        "path": "OU=Purchasing,DC=redil,DC=local"
-                    },
-                    "ivan.d": {
-                        "firstname": "Ivan",
-                        "surname": "Diaz",
-                        "password": "IvanDiaz2018",
-                        "city": "Villalon de Campos",
-                        "description": "Purchasing Department - empleado",
-                        "groups": [
-                            "Purchasing Department"
-                        ],
-                        "path": "OU=Purchasing,DC=redil,DC=local"
-                    },
-                    "paula.n": {
-                        "firstname": "Paula",
-                        "surname": "Nunez",
-                        "password": "PaulaNunez2019",
-                        "city": "Villalon de Campos",
-                        "description": "Purchasing Department - empleado",
-                        "groups": [
-                            "Purchasing Department"
-                        ],
-                        "path": "OU=Purchasing,DC=redil,DC=local"
-                    },
-                    "victor.r": {
-                        "firstname": "Victor",
-                        "surname": "Reyes",
-                        "password": "VictorReyes2020",
-                        "city": "Villalon de Campos",
-                        "description": "Maintenance Staff - empleado",
-                        "groups": [
-                            "Maintenance Staff"
-                        ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
-                    },
-                    "alicia.c": {
-                        "firstname": "Alicia",
-                        "surname": "Cano",
-                        "password": "AliciaCano2021",
-                        "city": "Villalon de Campos",
-                        "description": "Maintenance Staff - empleado",
-                        "groups": [
-                            "Maintenance Staff"
-                        ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
-                    },
-                    "jorge.l": {
-                        "firstname": "Jorge",
-                        "surname": "Lorenzo",
-                        "password": "JorgeLorenzo2022",
-                        "city": "Villalon de Campos",
-                        "description": "Maintenance Staff - empleado",
-                        "groups": [
-                            "Maintenance Staff"
-                        ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
-                    },
-                    "irene.c": {
-                        "firstname": "Irene",
-                        "surname": "Carrasco",
-                        "password": "IreneCarrasco2023",
-                        "city": "Villalon de Campos",
-                        "description": "Maintenance Staff - empleado",
-                        "groups": [
-                            "Maintenance Staff"
-                        ],
-                        "path": "OU=Maintenance,DC=redil,DC=local"
-                    },
-                    "juan.gi": {
+                    "juan.mo": {
                         "firstname": "Juan",
-                        "surname": "Gil",
-                        "password": "JuanGil2024",
+                        "surname": "Molina",
+                        "password": "JuanMolina2021",
                         "city": "Villalon de Campos",
-                        "description": "Management Board - empleado",
+                        "description": "Operario de almacen",
                         "groups": [
-                            "Management Board"
+                            "Warehouse Staff"
                         ],
-                        "path": "OU=Management,DC=redil,DC=local"
+                        "path": "OU=Warehouse,DC=redil,DC=local"
                     },
-                    "maria.me": {
+                    "maria.ve": {
                         "firstname": "Maria",
-                        "surname": "Medina",
-                        "password": "MariaMedina2018",
+                        "surname": "Vela",
+                        "password": "MariaVela2022",
                         "city": "Villalon de Campos",
-                        "description": "Management Board - empleado",
+                        "description": "Operario de almacen",
+                        "groups": [
+                            "Warehouse Staff"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "antonio.ag": {
+                        "firstname": "Antonio",
+                        "surname": "Aguilar",
+                        "password": "AntonioAguilar2023",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de almacen",
+                        "groups": [
+                            "Warehouse Staff"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "carmen.fe": {
+                        "firstname": "Carmen",
+                        "surname": "Ferrer",
+                        "password": "CarmenFerrer2018",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de almacen",
+                        "groups": [
+                            "Warehouse Staff"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "jose.su": {
+                        "firstname": "Jose",
+                        "surname": "Suarez",
+                        "password": "JoseSuarez2019",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de almacen",
+                        "groups": [
+                            "Warehouse Staff"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "ana.he": {
+                        "firstname": "Ana",
+                        "surname": "Herrera",
+                        "password": "AnaHerrera2020",
+                        "city": "Villalon de Campos",
+                        "description": "Operario de almacen",
+                        "groups": [
+                            "Warehouse Staff"
+                        ],
+                        "path": "OU=Warehouse,DC=redil,DC=local"
+                    },
+                    "manuel.vi": {
+                        "firstname": "Manuel",
+                        "surname": "Vidal",
+                        "password": "ManuelVidal2022",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de laboratorio/calidad",
+                        "groups": [
+                            "Quality Lab"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "laura.pa": {
+                        "firstname": "Laura",
+                        "surname": "Pascual",
+                        "password": "LauraPascual2023",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de laboratorio/calidad",
+                        "groups": [
+                            "Quality Lab"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "francisco.ig": {
+                        "firstname": "Francisco",
+                        "surname": "Iglesias",
+                        "password": "FranciscoIglesias2024",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de laboratorio/calidad",
+                        "groups": [
+                            "Quality Lab"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "isabel.gu": {
+                        "firstname": "Isabel",
+                        "surname": "Guerrero",
+                        "password": "IsabelGuerrero2019",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de laboratorio/calidad",
+                        "groups": [
+                            "Quality Lab"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "david.ca": {
+                        "firstname": "David",
+                        "surname": "Carrasco",
+                        "password": "DavidCarrasco2020",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de laboratorio/calidad",
+                        "groups": [
+                            "Quality Lab"
+                        ],
+                        "path": "OU=Quality,DC=redil,DC=local"
+                    },
+                    "sara.hi": {
+                        "firstname": "Sara",
+                        "surname": "Hidalgo",
+                        "password": "SaraHidalgo2022",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de marketing",
+                        "groups": [
+                            "Marketing Team"
+                        ],
+                        "path": "OU=Marketing,DC=redil,DC=local"
+                    },
+                    "javier.co": {
+                        "firstname": "Javier",
+                        "surname": "Cortes",
+                        "password": "JavierCortes2023",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de marketing",
+                        "groups": [
+                            "Marketing Team"
+                        ],
+                        "path": "OU=Marketing,DC=redil,DC=local"
+                    },
+                    "elena.so": {
+                        "firstname": "Elena",
+                        "surname": "Soto",
+                        "password": "ElenaSoto2024",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de marketing",
+                        "groups": [
+                            "Marketing Team"
+                        ],
+                        "path": "OU=Marketing,DC=redil,DC=local"
+                    },
+                    "daniel.fr": {
+                        "firstname": "Daniel",
+                        "surname": "Franco",
+                        "password": "DanielFranco2025",
+                        "city": "Villalon de Campos",
+                        "description": "Tecnico de marketing",
+                        "groups": [
+                            "Marketing Team"
+                        ],
+                        "path": "OU=Marketing,DC=redil,DC=local"
+                    },
+                    "rosa.lo": {
+                        "firstname": "Rosa",
+                        "surname": "Lopez",
+                        "password": "RosaLopez2017",
+                        "city": "Villalon de Campos",
+                        "description": "Direccion",
                         "groups": [
                             "Management Board"
                         ],
                         "path": "OU=Management,DC=redil,DC=local"
                     },
-                    "antonio.ca": {
-                        "firstname": "Antonio",
-                        "surname": "Campos",
-                        "password": "AntonioCampos2019",
+                    "sergio.ma": {
+                        "firstname": "Sergio",
+                        "surname": "Marin",
+                        "password": "SergioMarin2018",
                         "city": "Villalon de Campos",
-                        "description": "IT Support - empleado",
+                        "description": "Direccion",
                         "groups": [
-                            "IT Support"
+                            "Management Board"
                         ],
-                        "path": "OU=IT,DC=redil,DC=local"
-                    },
-                    "carmen.ru": {
-                        "firstname": "Carmen",
-                        "surname": "Rubio",
-                        "password": "CarmenRubio2020",
-                        "city": "Villalon de Campos",
-                        "description": "IT Support - empleado",
-                        "groups": [
-                            "IT Support"
-                        ],
-                        "path": "OU=IT,DC=redil,DC=local"
-                    },
-                    "jose.pa": {
-                        "firstname": "Jose",
-                        "surname": "Pardo",
-                        "password": "JosePardo2021",
-                        "city": "Villalon de Campos",
-                        "description": "IT Support - empleado",
-                        "groups": [
-                            "IT Support"
-                        ],
-                        "path": "OU=IT,DC=redil,DC=local"
+                        "path": "OU=Management,DC=redil,DC=local"
                     }
                 }
             }
