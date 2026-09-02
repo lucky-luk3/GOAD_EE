@@ -22,8 +22,8 @@ foreach ($u in $pwdnotreq) {
 }
 
 # --- Disable leaver accounts (people who no longer work here) -----------------
-# These live in OU=DisabledAccounts; disabling them reflects real AD hygiene.
+# These live in OU=Disabled,OU=REDIL; disabling them reflects real AD hygiene.
 try {
-    Get-ADUser -Filter * -SearchBase "OU=DisabledAccounts,DC=redil,DC=local" |
+    Get-ADUser -Filter * -SearchBase "OU=Disabled,OU=REDIL,DC=redil,DC=local" |
         ForEach-Object { Disable-ADAccount -Identity $_; Write-Host "[+] disabled leaver $($_.SamAccountName)" }
 } catch { Write-Host "[-] Could not disable leaver accounts: $_" }
