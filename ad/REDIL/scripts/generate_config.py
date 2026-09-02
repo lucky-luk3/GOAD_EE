@@ -21,7 +21,7 @@ import json
 DOMAIN = "redil.local"
 NETBIOS = "REDIL"
 BASE = "DC=redil,DC=local"
-DOMAIN_PASSWORD = "R3dilQu3s0s#2024!"
+DOMAIN_PASSWORD = "R3dilQu3s0s-2024"
 DC_HOSTNAME = "REDILDC01"
 
 def ou_path(*ous):

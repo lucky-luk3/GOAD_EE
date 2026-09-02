@@ -4,7 +4,7 @@
             "dc01": {
                 "hostname": "REDILDC01",
                 "type": "dc",
-                "local_admin_password": "R3dilQu3s0s#2024!",
+                "local_admin_password": "R3dilQu3s0s-2024",
                 "domain": "redil.local",
                 "path": "DC=redil,DC=local",
                 "scripts": [
@@ -20,7 +20,7 @@
         "domains": {
             "redil.local": {
                 "dc": "dc01",
-                "domain_password": "R3dilQu3s0s#2024!",
+                "domain_password": "R3dilQu3s0s-2024",
                 "netbios_name": "REDIL",
                 "ca_server": "dc01",
                 "ca_web_enrollment": false,
