@@ -1,0 +1,5 @@
+boxes = [
+  { :name => "REDILDC01",  :ip => "{{ip_range}}.10", :box => "mayfly/windows_server2019", :os => "windows", :cpus => 4, :mem => 6000},
+  # minimal domain-joined member server (no extra services)
+  { :name => "REDILSRV01", :ip => "{{ip_range}}.21", :box => "mayfly/windows_server2019", :os => "windows", :cpus => 2, :mem => 2048},
+]

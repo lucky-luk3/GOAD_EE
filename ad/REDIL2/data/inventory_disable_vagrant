@@ -1,0 +1,79 @@
+[default]
+; Note: ansible_host *MUST* be an IPv4 address or setting things like DNS
+; servers will break.
+dc01 ansible_host={{ip_range}}.10 dns_domain=dc01 dict_key=dc01 ansible_user=administrator@redil.local ansible_password=R3dilQu3s0s-2024
+srv01 ansible_host={{ip_range}}.21 dns_domain=dc01 dict_key=srv01 ansible_user=administrator@redil.local ansible_password=R3dilQu3s0s-2024
+
+[all:vars]
+; domain_name : folder inside ad/
+domain_name=REDIL2
+
+;use to setup a dns server in the start of provisioning
+force_dns_server=no
+dns_server=x.x.x.x
+
+;dns server forwarder
+dns_server_forwarder=1.1.1.1
+
+; winrm connection (windows)
+ansible_winrm_transport=ntlm
+ansible_user=notused
+ansible_password=notused
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+ansible_winrm_operation_timeout_sec=400
+ansible_winrm_read_timeout_sec=500
+
+; proxy settings
+enable_http_proxy=no
+ad_http_proxy=http://x.x.x.x:xxxx
+ad_https_proxy=http://x.x.x.x:xxxx
+
+; LAB SCENARIO CONFIGURATION -----------------------------
+[domain]
+dc01
+srv01
+
+[linux_domain]
+
+[dc]
+dc01
+
+[server]
+srv01
+
+[workstation]
+
+[parent_dc]
+dc01
+
+[child_dc]
+
+[trust]
+
+[adcs]
+dc01
+
+[adcs_customtemplates]
+
+[iis]
+[mssql]
+[mssql_ssms]
+[webdav]
+
+[laps_dc]
+[laps_server]
+[laps_workstation]
+
+[update]
+dc01
+srv01
+
+[no_update]
+
+[defender_on]
+[defender_off]
+dc01
+srv01
+
+[extensions]
