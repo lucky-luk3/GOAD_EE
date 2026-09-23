@@ -2,7 +2,7 @@
     "lab": {
         "hosts": {
             "dc01": {
-                "hostname": "REDILDC01",
+                "hostname": "REDIL2DC01",
                 "type": "dc",
                 "local_admin_password": "R3dilQu3s0s-2024",
                 "domain": "redil.local",
@@ -37,7 +37,7 @@
                 }
             },
             "srv01": {
-                "hostname": "REDILSRV01",
+                "hostname": "REDIL2SRV01",
                 "type": "server",
                 "local_admin_password": "Srv01-L0cal-Adm1n",
                 "domain": "redil.local",

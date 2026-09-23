@@ -565,7 +565,7 @@ config = {
 # movement). No extra services are installed on it.
 # ---------------------------------------------------------------------------
 SRV01 = {
-    "hostname": "REDILSRV01",
+    "hostname": "REDIL2SRV01",
     "type": "server",
     "local_admin_password": "Srv01-L0cal-Adm1n",
     "domain": DOMAIN,
@@ -589,8 +589,10 @@ if __name__ == "__main__":
     print("REDIL  -> users:", len(users), "groups:", len(groups["global"]),
           "ous:", len(organisation_units), "acls:", len(acls))
 
-    # REDIL2 = same config + the member server
+    # REDIL2 = same config + the member server. Distinct machine names so the
+    # two labs don't collide (e.g. VirtualBox rejects a duplicate VM name).
     config2 = copy.deepcopy(config)
+    config2["lab"]["hosts"]["dc01"]["hostname"] = "REDIL2DC01"
     config2["lab"]["hosts"]["srv01"] = SRV01
     with open("/home/user/GOAD_EE/ad/REDIL2/data/config.json", "w",
               encoding="utf-8") as f:

@@ -22,15 +22,17 @@ server makes the lab collect the edges a real BloodHound/GrexID demo needs:
 
 | Host | Role | Box | vCPU / RAM | IP |
 |------|------|-----|-----------|-----|
-| `REDILDC01` | DC `redil.local` (+ Enterprise CA) | `mayfly/windows_server2019` | 4 / 6144 | `.10` |
-| `REDILSRV01` | Member server, **no services** | `mayfly/windows_server2019` | 2 / 2048 | `.21` |
+| `REDIL2DC01` | DC `redil.local` (+ Enterprise CA) | `mayfly/windows_server2019` | 4 / 6144 | `.10` |
+| `REDIL2SRV01` | Member server, **no services** | `mayfly/windows_server2019` | 2 / 2048 | `.21` |
 
 The member server is the smallest sensible option: the same image the DC already
 uses (no second multi-GB box to download; no Server Core box is published in the
 project's box set), sized down to 2 vCPU / 2 GB. It is joined to the domain by the
 standard GOAD mechanism — the `[server]` inventory group runs the `member_server`
 role (`win_domain_membership`) in `ansible/ad-members.yml` — and moved into
-`OU=Servers,OU=Admin,OU=REDIL`.
+`OU=Servers,OU=Admin,OU=REDIL`. Its VM/host names are distinct from REDIL
+(`REDIL2DC01` / `REDIL2SRV01`) so both labs can coexist without a VirtualBox
+name clash.
 
 ## Config difference
 
@@ -38,7 +40,7 @@ role (`win_domain_membership`) in `ansible/ad-members.yml` — and moved into
 
 ```json
 "srv01": {
-  "hostname": "REDILSRV01",
+  "hostname": "REDIL2SRV01",
   "type": "server",
   "local_admin_password": "Srv01-L0cal-Adm1n",
   "domain": "redil.local",
